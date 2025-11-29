@@ -175,52 +175,52 @@ export const modules: ModulItem[] = [
       { 
         title: '1. Konsep Hidroponik Wick', 
         content: 'Sistem Wick memanfaatkan daya kapilaritas sumbu (kain flanel) untuk menyedot nutrisi dari bak ke akar. Tanpa listrik, hening, murah.',
-        image: 'https://images.unsplash.com/photo-1505471768190-275e2f970f2c?q=80&w=800&auto=format&fit=crop'
+        image: 'https://i.ibb.co.com/mrfkXdqJ/01.png?q=80&w=800&auto=format&fit=crop'
       },
       { 
         title: '2. Media Tanam: Rockwool', 
         content: 'Gunakan Rockwool (serat batuan). Potong dadu 2.5cm. Basahi dengan air, jangan diperas agar rongga udara tetap ada.',
-        image: 'https://images.unsplash.com/photo-1591857177580-dc82b9e4e11c?q=80&w=800&auto=format&fit=crop'
+        image: 'https://i.ibb.co.com/v4Ts723Z/01.png?q=80&w=800&auto=format&fit=crop'
       },
       { 
         title: '3. Fase Kritis: Sprout', 
         content: 'Masukkan benih ke rockwool basah. Simpan gelap. Begitu pecah benih (putih), WAJIB JEMUR matahari agar tidak kutilang.',
-        image: 'https://images.unsplash.com/photo-1466692476868-aef1dfb1e735?q=80&w=800&auto=format&fit=crop'
+        image: 'https://i.ibb.co.com/HDMrC1St/03.png?q=80&w=800&auto=format&fit=crop'
       },
       { 
         title: '4. Nutrisi AB Mix', 
         content: 'Gunakan "AB Mix Sayuran Daun". Larutkan Stok A dan B terpisah. Jangan dicampur saat pekat agar tidak menggumpal.',
-        image: 'https://images.unsplash.com/photo-1585320806297-9794b3e4eeae?q=80&w=800&auto=format&fit=crop'
+        image: 'https://i.ibb.co.com/gb0Gx8Kn/unnamed.jpg?q=80&w=800&auto=format&fit=crop'
       },
       { 
         title: '5. Rakit Bak & Netpot', 
         content: 'Siapkan bak plastik dan styrofoam berlubang. Pasang kain flanel di netpot menjulur ke bawah sebagai sumbu.',
-        image: 'https://images.unsplash.com/photo-1556776587-c335e69e403d?q=80&w=800&auto=format&fit=crop'
+        image: 'https://i.ibb.co.com/S4MtBhqD/unnamed.jpg?q=80&w=800&auto=format&fit=crop'
       },
       { 
         title: '6. Pindah Tanam', 
         content: 'Pindahkan bibit (4 daun) ke netpot. Masukkan ke lubang styrofoam. Pastikan flanel menyentuh air nutrisi.',
-        image: 'https://images.unsplash.com/photo-1627914971260-5628b031b264?q=80&w=800&auto=format&fit=crop'
+        image: 'https://i.ibb.co.com/Jj2gc52L/unnamed.jpg?q=80&w=800&auto=format&fit=crop'
       },
       { 
         title: '7. Jarak Air (Oksigen)', 
         content: 'Beri jarak 1-2 cm antara dasar netpot dan permukaan air nutrisi. Akar butuh ruang udara untuk bernapas (oksigen).',
-        image: 'https://images.unsplash.com/photo-1581578013564-9aa6f81e3c4a?q=80&w=800&auto=format&fit=crop'
+        image: 'https://i.ibb.co.com/Lzg46FQr/unnamed.jpg?q=80&w=800&auto=format&fit=crop'
       },
       { 
         title: '8. Perawatan Harian', 
         content: 'Cek bak nutrisi. Jika surut, tambah larutan baru. Pastikan kena matahari min 5 jam agar daun lebar hijau.',
-        image: 'https://images.unsplash.com/photo-1627914971260-5628b031b264?q=80&w=800&auto=format&fit=crop'
+        image: 'https://i.ibb.co.com/MkxCTyG7/unnamed.jpg?q=80&w=800&auto=format&fit=crop'
       },
       { 
         title: '9. Hama', 
         content: 'Ambil ulat manual. Jika ada kutu, semprot air sabun tipis atau pestisida nabati.',
-        image: 'https://images.unsplash.com/photo-1596568359553-a56de6970068?q=80&w=800&auto=format&fit=crop'
+        image: 'https://i.ibb.co.com/twH0Dr65/unnamed.jpg?q=80&w=800&auto=format&fit=crop'
       },
       { 
         title: '10. Panen', 
         content: 'Panen usia 30-40 hari. Cabut beserta akarnya atau potong pangkal. Cuci bersih netpot sebelum dipakai lagi.',
-        image: 'https://images.unsplash.com/photo-1524593166156-312f362cada0?q=80&w=800&auto=format&fit=crop'
+        image: 'https://i.ibb.co.com/FkWkN2ft/unnamed.jpg?q=80&w=800&auto=format&fit=crop'
       },
     ],
     quiz: [
@@ -246,52 +246,52 @@ export const modules: ModulItem[] = [
       { 
         title: '1. Sifat Epifit', 
         content: 'Anggrek menempel di pohon, bukan di tanah. Kuncinya adalah SIRKULASI UDARA di akar. Jangan pakai tanah padat.',
-        image: 'https://images.unsplash.com/photo-1545663737-1c699920b7bc?q=80&w=800&auto=format&fit=crop'
+        image: 'https://i.ibb.co.com/hFwSq0mT/unnamed.jpg?q=80&w=800&auto=format&fit=crop'
       },
       { 
         title: '2. Media Tanam', 
         content: 'Lingkungan kering: Pakai Moss/Sabut Kelapa (simpan air). Lingkungan lembap: Pakai Arang/Pakis (drainase cepat).',
-        image: 'https://images.unsplash.com/photo-1603206277266-93049534e3fb?q=80&w=800&auto=format&fit=crop'
+        image: 'https://i.ibb.co.com/pvWqKkSh/unnamed.jpg?q=80&w=800&auto=format&fit=crop'
       },
       { 
         title: '3. Pot', 
         content: 'Gunakan pot transparan atau pot tanah liat banyak lubang samping. Akar butuh napas dan fotosintesis.',
-        image: 'https://images.unsplash.com/photo-1602613977930-b302624a49c9?q=80&w=800&auto=format&fit=crop'
+        image: 'https://i.ibb.co.com/wZSRYr4D/unnamed.jpg?q=80&w=800&auto=format&fit=crop'
       },
       { 
         title: '4. Pencahayaan', 
         content: 'Tidak tahan matahari langsung (gosong). Suka cahaya teduh terang (teras/paranet). Ciri pas: Daun hijau cerah.',
-        image: 'https://images.unsplash.com/photo-1599598425947-32c744dc922d?q=80&w=800&auto=format&fit=crop'
+        image: 'https://i.ibb.co.com/84ttv5RK/unnamed.jpg?q=80&w=800&auto=format&fit=crop'
       },
       { 
         title: '5. Cara Menyiram', 
         content: 'Siram HANYA saat media kering. Akar hijau=kenyang (jangan siram). Akar putih=haus (siram). Hindari air di ketiak daun.',
-        image: 'https://images.unsplash.com/photo-1563725676317-a0684f092e46?q=80&w=800&auto=format&fit=crop'
+        image: 'https://i.ibb.co.com/KcGKXDqw/unnamed.jpg?q=80&w=800&auto=format&fit=crop'
       },
       { 
         title: '6. Sirkulasi Udara', 
         content: 'Gunakan kipas angin kecil jika indoor. Angin mencegah jamur dan bakteri di media yang lembap.',
-        image: 'https://images.unsplash.com/photo-1550948537-130a1ce83314?q=80&w=800&auto=format&fit=crop'
+        image: 'https://i.ibb.co.com/RTs58N2X/unnamed.jpg?q=80&w=800&auto=format&fit=crop'
       },
       { 
         title: '7. Pemupukan', 
         content: 'Pupuk NPK cair dosis sangat rendah (1/4 dosis), semprot seminggu sekali ke daun dan akar.',
-        image: 'https://images.unsplash.com/photo-1620126743958-8b9a9aa89267?q=80&w=800&auto=format&fit=crop'
+        image: 'https://i.ibb.co.com/SXgxXhfq/unnamed.jpg?q=80&w=800&auto=format&fit=crop'
       },
       { 
         title: '8. Merangsang Bunga', 
         content: 'Anggrek butuh stres suhu (perbedaan suhu siang-malam ekstrem) untuk berbunga. Taruh di tempat sejuk saat malam.',
-        image: 'https://images.unsplash.com/photo-1566915843477-8d54641977b1?q=80&w=800&auto=format&fit=crop'
+        image: 'https://i.ibb.co.com/q3YtjMJP/unnamed.jpg?q=80&w=800&auto=format&fit=crop'
       },
       { 
         title: '9. Pasca Bunga', 
         content: 'Potong tangkai bunga di atas ruas tidur (2 cm). Bisa tumbuh bunga baru atau anakan (keiki).',
-        image: 'https://images.unsplash.com/photo-1598528738936-c50861ccf95f?q=80&w=800&auto=format&fit=crop'
+        image: 'https://i.ibb.co.com/fzj7mDJt/unnamed.jpg?q=80&w=800&auto=format&fit=crop'
       },
       { 
         title: '10. Penyakit', 
         content: 'Daun lembek berair = busuk bakteri. Potong bagian busuk, beri fungisida/kayu manis, kurangi air.',
-        image: 'https://images.unsplash.com/photo-1586953229671-e97d19129df5?q=80&w=800&auto=format&fit=crop'
+        image: 'https://i.ibb.co.com/tpsc5zdD/unnamed.jpg?q=80&w=800&auto=format&fit=crop'
       },
     ],
     quiz: [
@@ -317,52 +317,52 @@ export const modules: ModulItem[] = [
       { 
         title: '1. Mengapa Jahe Merah?', 
         content: 'Lebih pedas dan mahal dibanding jahe biasa. Cocok ditanam di polybag vertikal untuk hasil maksimal.',
-        image: 'https://images.unsplash.com/photo-1615485290382-441e4d049cb5?q=80&w=800&auto=format&fit=crop'
+        image: 'https://i.ibb.co.com/BHWsQcxm/unnamed.jpg?q=80&w=800&auto=format&fit=crop'
       },
       { 
         title: '2. Syarat Bibit', 
         content: 'Pilih rimpang tua (10 bulan+), kulit cerah, punya 2-3 mata tunas. Jangan pakai jahe muda pasar.',
-        image: 'https://images.unsplash.com/photo-1615484477778-ca3b77940c25?q=80&w=800&auto=format&fit=crop'
+        image: 'https://i.ibb.co.com/1tzD3VWj/unnamed.jpg?q=80&w=800&auto=format&fit=crop'
       },
       { 
         title: '3. Pengecambahan', 
         content: 'Hamparkan rimpang di jerami lembap. Siram tiap hari. Tunas muncul dalam 2-3 minggu.',
-        image: 'https://images.unsplash.com/photo-1615485500704-8e99099928b3?q=80&w=800&auto=format&fit=crop'
+        image: 'https://i.ibb.co.com/Qj89LWps/unnamed.jpg?q=80&w=800&auto=format&fit=crop'
       },
       { 
         title: '4. Polybag & Media', 
         content: 'Gunakan polybag besar/karung. Media: Tanah : Pupuk Kandang : Sekam (1:1:1). Isi 1/4 bagian saja dulu!',
-        image: 'https://images.unsplash.com/photo-1622383563227-0440114a8520?q=80&w=800&auto=format&fit=crop'
+        image: 'https://i.ibb.co.com/dsNqJjvs/unnamed.jpg?q=80&w=800&auto=format&fit=crop'
       },
       { 
         title: '5. Cara Menanam', 
         content: 'Tanam rimpang bertunas sedalam 3-5 cm, tunas menghadap ke ATAS. 2-3 rimpang per polybag.',
-        image: 'https://images.unsplash.com/photo-1592187270271-9a4b84faa228?q=80&w=800&auto=format&fit=crop'
+        image: 'https://i.ibb.co.com/mrPG5QjS/unnamed.jpg?q=80&w=800&auto=format&fit=crop'
       },
       { 
         title: '6. Penempatan', 
         content: 'Muda (0-3 bulan): butuh naungan. Dewasa (4+ bulan): butuh matahari penuh agar rimpang besar.',
-        image: 'https://images.unsplash.com/photo-1591857177580-dc82b9e4e11c?q=80&w=800&auto=format&fit=crop'
+        image: 'https://i.ibb.co.com/8g38SHNw/unnamed.jpg?q=80&w=800&auto=format&fit=crop'
       },
       { 
         title: '7. Pembumbunan (RAHASIA)', 
         content: 'Setiap batang meninggi, tambah tanah+pupuk ke polybag (timbun). Lakukan bertahap sampai penuh. Ini melipatgandakan hasil.',
-        image: 'https://images.unsplash.com/photo-1622383563227-0440114a8520?q=80&w=800&auto=format&fit=crop'
+        image: 'https://i.ibb.co.com/7t9DNsNp/unnamed.jpg?q=80&w=800&auto=format&fit=crop'
       },
       { 
         title: '8. Penyiraman', 
         content: 'Jahe tidak suka becek (busuk). Siram secukupnya agar lembap. Pastikan drainase lancar.',
-        image: 'https://images.unsplash.com/photo-1615811361523-6bd03d7748e7?q=80&w=800&auto=format&fit=crop'
+        image: 'https://i.ibb.co.com/x8YSTndg/unnamed.jpg?q=80&w=800&auto=format&fit=crop'
       },
       { 
         title: '9. Hama', 
         content: 'Bercak daun kuning (jamur). Semprot fungisida hayati atau pestisida nabati. Jaga kebersihan polybag.',
-        image: 'https://images.unsplash.com/photo-1599940824399-b87987ced72a?q=80&w=800&auto=format&fit=crop'
+        image: 'https://i.ibb.co.com/Kx7YR3MJ/unnamed.jpg?q=80&w=800&auto=format&fit=crop'
       },
       { 
         title: '10. Panen', 
         content: 'Panen usia 10-12 bulan saat daun menguning/kering. Bongkar polybag. 1 polybag bisa hasilkan 5-10kg.',
-        image: 'https://images.unsplash.com/photo-1635843104672-031d279d0121?q=80&w=800&auto=format&fit=crop'
+        image: 'https://i.ibb.co.com/BV7tHxDL/unnamed.jpg?q=80&w=800&auto=format&fit=crop'
       },
     ],
     quiz: [
