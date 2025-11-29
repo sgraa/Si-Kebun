@@ -3,7 +3,7 @@
 export interface QuizItem {
   question: string;
   options: string[];
-  correctAnswer: number; // Index jawaban benar (0-3)
+  correctAnswer: number;
 }
 
 export interface ModulItem {
@@ -12,154 +12,365 @@ export interface ModulItem {
   description: string;
   level: 'Pemula' | 'Menengah' | 'Ahli';
   duration: string;
-  image: string;
-  materi: { title: string; content: string }[]; 
+  image: string; // Gambar Cover Modul
+  // Update: Menambahkan properti 'image' opsional di setiap langkah materi
+  materi: { title: string; content: string; image: string }[]; 
   quiz: QuizItem[]; 
 }
 
 export const modules: ModulItem[] = [
-  // --- 1. CABAI RAWIT ---
+  // =========================================
+  // 1. CABAI RAWIT
+  // =========================================
   {
     id: 'cabe',
-    title: 'Menanam Cabai Rawit',
-    description: 'Panduan lengkap menanam cabai di pot agar berbuah lebat.',
+    title: 'Cabai Rawit di Pot',
+    description: 'Pelajari teknik menanam cabai rawit dari biji hingga panen melimpah di lahan terbatas.',
     level: 'Pemula',
     duration: '60 Menit',
-    image: 'https://i.ibb.co.com/xScPGXtt/1-cabe-rawit.jpg?q=80&w=600&auto=format&fit=crop',
+    image: 'https://i.ibb.co.com/Fq6LHK8F/unnamed.jpg?q=80&w=800&auto=format&fit=crop',
     materi: [
-      { title: '1. Pengenalan Cabai Rawit', content: 'Cabai rawit (Capsicum frutescens) adalah tanaman yang sangat cocok ditanam di iklim tropis Indonesia. Tanaman ini menyukai sinar matahari penuh dan bisa hidup bertahun-tahun jika dirawat dengan benar.' },
-      { title: '2. Persiapan Benih', content: 'Pilih buah cabai yang tua (merah menyala) dan sehat. Belah buahnya, ambil bijinya, lalu jemur di bawah sinar matahari selama 3-4 jam hingga kering angin (tidak terlalu gosong).' },
-      { title: '3. Seleksi Benih', content: 'Rendam biji cabai dalam air hangat kuku selama 15 menit. Buang biji yang mengapung karena itu kopong/mati. Ambil biji yang tenggelam untuk ditanam.' },
-      { title: '4. Media Semai', content: 'Siapkan wadah semai (bisa tray atau polybag kecil). Campurkan tanah halus dan pupuk kandang yang sudah diayak dengan perbandingan 1:1. Basahi sedikit agar lembap.' },
-      { title: '5. Proses Penyemaian', content: 'Tebar benih di media semai, lalu tutup tipis dengan tanah. Letakkan di tempat teduh. Siram dengan spray halus setiap pagi. Benih akan berkecambah dalam 5-7 hari.' },
-      { title: '6. Pindah Tanam (Transplanting)', content: 'Setelah bibit memiliki 4-5 daun sejati (usia sekitar 3-4 minggu), pindahkan ke pot besar/polybag diameter 30cm. Lakukan pemindahan pada sore hari agar tanaman tidak layu terkena matahari terik.' },
-      { title: '7. Media Tanam Pot Besar', content: 'Untuk pot besar, gunakan campuran Tanah : Sekam Bakar : Pupuk Kandang dengan perbandingan 1:1:1. Pastikan media gembur (porous) agar air tidak menggenang.' },
-      { title: '8. Perawatan & Penyiraman', content: 'Siram tanaman 2 kali sehari (pagi & sore) jika cuaca panas. Jika musim hujan, kurangi penyiraman. Pastikan air tidak menggenang di pot karena bisa menyebabkan akar busuk.' },
-      { title: '9. Pemupukan & Pruning', content: 'Berikan pupuk NPK 16-16-16 (setengah sendok teh dilarutkan air) setiap 2 minggu sekali. Lakukan perempelan (membuang tunas air di ketiak daun) agar nutrisi fokus ke buah.' },
-      { title: '10. Masa Panen', content: 'Cabai mulai berbunga di usia 2 bulan dan bisa dipanen saat usia 3 bulan. Petik buah yang sudah merah atau oranye beserta tangkainya agar tanaman awet.' },
+      { 
+        title: '1. Mengapa Cabai Rawit?', 
+        content: 'Cabai rawit (Capsicum frutescens) adalah komoditas strategis. Tanaman ini bersifat "Perennial" (tahunan), bisa hidup dan berbuah hingga 2-3 tahun. Kuncinya adalah sinar matahari penuh (6-8 jam/hari).',
+        image: 'https://i.ibb.co.com/4533T43/unnamed.jpg?q=80&w=800&auto=format&fit=crop'
+      },
+      { 
+        title: '2. Memilih Benih Berkualitas', 
+        content: 'Pilih buah cabai yang tua (merah sempurna). Ambil biji bagian tengah karena paling bernas. Jemur biji di bawah sinar matahari tidak langsung selama 3 jam.',
+        image: 'https://i.ibb.co.com/N69qR6Zc/unnamed.jpg?q=80&w=800&auto=format&fit=crop'
+      },
+      { 
+        title: '3. Seleksi Benih (Water Test)', 
+        content: 'Masukkan biji ke dalam air hangat kuku. Diamkan 15 menit. Biji yang MENGAPUNG adalah biji mati, buang. Ambil hanya biji yang TENGGELAM.',
+        image: 'https://i.ibb.co.com/S4BKLYLX/unnamed.jpg?q=80&w=800&auto=format&fit=crop'
+      },
+      { 
+        title: '4. Teknik Penyemaian', 
+        content: 'Gunakan tray semai. Media: Tanah saring : Pupuk Kandang halus (1:1). Tanam 1 biji per lubang, tutup tipis tanah. Simpan di tempat teduh.',
+        image: 'https://i.ibb.co.com/BHxSJmhH/unnamed.jpg?q=80&w=800&auto=format&fit=crop'
+      },
+      { 
+        title: '5. Perawatan Bibit (Nursery)', 
+        content: 'Setelah muncul tunas, WAJIB kenalkan matahari pagi (jam 7-9) agar batang tidak kutilang (kurus tinggi). Jaga kelembapan dengan spray halus.',
+        image: 'https://i.ibb.co.com/MDKnSWcz/unnamed.jpg?q=80&w=800&auto=format&fit=crop'
+      },
+      { 
+        title: '6. Pindah Tanam (Transplanting)', 
+        content: 'Pindah tanam saat usia 3-4 minggu (4 daun sejati). Lakukan pada SORE HARI agar tanaman tidak stres terkena panas matahari langsung.',
+        image: 'https://i.ibb.co.com/9z3JnHy/unnamed.jpg?q=80&w=800&auto=format&fit=crop'
+      },
+      { 
+        title: '7. Media Tanam Pot Permanen', 
+        content: 'Rumus media tanam: 1 Tanah : 1 Sekam Bakar : 1 Pupuk Kandang. Sekam bakar penting agar tanah gembur dan akar mudah menembus.',
+        image: 'https://i.ibb.co.com/fz9KFC3S/unnamed.jpg?q=80&w=800&auto=format&fit=crop'
+      },
+      { 
+        title: '8. Fase Vegetatif & Generatif', 
+        content: 'Fase awal beri pupuk tinggi Nitrogen (daun). Saat berbunga, ganti pupuk tinggi Fosfor & Kalium (MKP) agar bunga tidak rontok.',
+        image: 'https://i.ibb.co.com/PsmJQMWD/ssss.png?q=80&w=800&auto=format&fit=crop'
+      },
+      { 
+        title: '9. Perempelan (Pruning)', 
+        content: 'Buang semua "tunas air" yang tumbuh di ketiak daun di bawah cabang Y pertama. Agar nutrisi fokus ke pembentukan buah di atas.',
+        image: 'https://i.ibb.co.com/SD63wgc6/unnamed.jpg?q=80&w=800&auto=format&fit=crop'
+      },
+      { 
+        title: '10. Panen', 
+        content: 'Panen saat usia 80-90 hari. Petik buah yang merah beserta tangkainya. Lakukan panen di pagi hari saat buah masih segar.',
+        image: 'https://i.ibb.co.com/bRv6qnWk/unnamed.jpg?q=80&w=800&auto=format&fit=crop'
+      },
     ],
     quiz: [
-      { question: 'Berapa perbandingan media tanam yang ideal untuk cabai?', options: ['1:1:1 (Tanah:Sekam:Pupuk)', '3:1:1 (Tanah:Pasir:Batu)', 'Hanya Tanah Liat', 'Hanya Pasir'], correctAnswer: 0 },
-      { question: 'Manakah benih cabai yang berkualitas bagus?', options: ['Yang mengapung di air', 'Yang tenggelam di air', 'Yang berwarna hitam pekat', 'Yang ukurannya sangat kecil'], correctAnswer: 1 },
-      { question: 'Kapan waktu terbaik memindahkan bibit ke pot besar?', options: ['Siang bolong', 'Tengah malam', 'Sore hari', 'Pagi buta'], correctAnswer: 2 },
-      { question: 'Apa tujuan perempelan (pruning) tunas air?', options: ['Agar tanaman mati', 'Agar nutrisi fokus ke pembuahan', 'Agar daun menjadi kuning', 'Agar akar cepat busuk'], correctAnswer: 1 },
-      { question: 'Berapa lama rata-rata cabai bisa mulai dipanen?', options: ['1 Bulan', '2 Minggu', '3 Bulan', '1 Tahun'], correctAnswer: 2 },
+      { question: 'Apa fungsi utama sekam dalam campuran media tanam?', options: ['Hiasan', 'Memadatkan tanah', 'Membuat tanah gembur/porous', 'Membunuh hama'], correctAnswer: 2 },
+      { question: 'Mengapa bibit baru tumbuh harus dijemur?', options: ['Agar cepat kering', 'Mencegah etiolasi (batang kurus)', 'Agar daun merah', 'Membunuh akar'], correctAnswer: 1 },
+      { question: 'Bagian mana yang dibuang saat perempelan?', options: ['Akar', 'Bunga', 'Tunas air di bawah cabang Y', 'Pucuk daun'], correctAnswer: 2 },
+      { question: 'Kapan waktu terbaik pindah tanam?', options: ['Siang bolong', 'Pagi buta', 'Sore hari', 'Tengah malam'], correctAnswer: 2 },
+      { question: 'Nutrisi fase pembungaan butuh?', options: ['Nitrogen tinggi', 'Fosfor & Kalium tinggi', 'Hanya air', 'Vitamin C'], correctAnswer: 1 },
     ]
   },
 
-  // --- 2. TOMAT CERI ---
+  // =========================================
+  // 2. TOMAT CERI
+  // =========================================
   {
     id: 'tomat',
-    title: 'Budidaya Tomat Ceri',
-    description: 'Cara menanam tomat ceri manis di lahan sempit atau pot.',
+    title: 'Budidaya Tomat Ceri Manis',
+    description: 'Teknik menanam tomat ceri di lahan sempit dengan hasil buah manis.',
     level: 'Menengah',
     duration: '45 Menit',
-    image: 'https://images.unsplash.com/photo-1592841200221-a6898f307baa?q=80&w=600&auto=format&fit=crop',
+    image: 'https://images.unsplash.com/photo-1592841200221-a6898f307baa?q=80&w=800&auto=format&fit=crop',
     materi: [
-      { title: '1. Mengenal Tomat Ceri', content: 'Tomat ceri memiliki buah berukuran kecil namun rasanya lebih manis dibanding tomat sayur biasa. Tanaman ini sangat produktif dan cocok untuk tabulampot.' },
-      { title: '2. Syarat Tumbuh', content: 'Tomat butuh sinar matahari minimal 6-8 jam sehari. Jangan menanam di tempat yang terlalu teduh karena tanaman akan kurus tinggi (etiolasi) dan sulit berbuah.' },
-      { title: '3. Persiapan Pot & Ajir', content: 'Siapkan pot ukuran minimal 35cm. Siapkan juga Ajir (kayu penyangga) setinggi 1 meter, karena batang tomat bersifat merambat dan butuh sandaran.' },
-      { title: '4. Penyemaian', content: 'Sama seperti cabai, semai benih di tray. Jaga kelembapan. Tomat tumbuh sangat cepat, biasanya 3 hari sudah pecah benih.' },
-      { title: '5. Pindah Tanam', content: 'Pindahkan bibit saat berusia 3 minggu ke pot besar. Tanam batangnya agak dalam (sebagian batang tertimbun tanah) agar akar tumbuh lebih banyak dari batang tersebut.' },
-      { title: '6. Pemasangan Ajir', content: 'Pasang kayu penyangga segera setelah pindah tanam. Jangan menunggu tanaman besar karena berisiko merusak akar saat menancapkan kayu.' },
-      { title: '7. Penyiraman', content: 'Tomat sangat haus air. Siram rutin, tapi jangan membasahi daunnya! Air pada daun tomat memicu jamur. Siram langsung ke tanah.' },
-      { title: '8. Pewiwilan (Pruning)', content: 'Buang semua tunas yang tumbuh di ketiak daun (antara batang utama dan dahan). Sisakan hanya 1 atau 2 batang utama agar buah maksimal.' },
-      { title: '9. Pemupukan Kalsium', content: 'Selain NPK, tomat butuh Kalsium agar pantat buah tidak busuk (Blossom End Rot). Bisa gunakan kulit telur yang dihancurkan atau kapur dolomit.' },
-      { title: '10. Panen', content: 'Tomat ceri bisa dipanen mulai usia 60-70 hari. Petik saat warna mulai oranye kemerahan. Panen bisa dilakukan setiap 3 hari sekali.' },
+      { 
+        title: '1. Mengenal Tomat Ceri', 
+        content: 'Tomat ceri berukuran kecil tapi manis. Tanaman ini "Indeterminate", batangnya terus tumbuh memanjang dan butuh penopang.',
+        image: 'https://images.unsplash.com/photo-1518977676601-b53f82aba655?q=80&w=800&auto=format&fit=crop'
+      },
+      { 
+        title: '2. Syarat Mutlak: Matahari', 
+        content: 'Tomat butuh 6-8 jam matahari. Jika teduh, tanaman kurus dan gagal buah. Pastikan lokasi pot sangat terang.',
+        image: 'https://images.unsplash.com/photo-1526346698789-22fd84314424?q=80&w=800&auto=format&fit=crop'
+      },
+      { 
+        title: '3. Menanam Batang Dalam', 
+        content: 'Saat pindah tanam, kubur sebagian batang bawah tomat. Batang yang tertimbun akan mengeluarkan akar, membuat tanaman lebih kuat.',
+        image: 'https://images.unsplash.com/photo-1592419044706-39796d40f98c?q=80&w=800&auto=format&fit=crop'
+      },
+      { 
+        title: '4. Pemasangan Ajir (Staking)', 
+        content: 'Pasang tongkat kayu/bambu setinggi 1.5m segera setelah tanam. Jangan tunda agar akar tidak rusak tertusuk nanti.',
+        image: 'https://images.unsplash.com/photo-1591857177580-dc82b9e4e11c?q=80&w=800&auto=format&fit=crop'
+      },
+      { 
+        title: '5. Teknik Penyiraman', 
+        content: 'Siram TANAHNYA, BUKAN DAUNNYA. Air di daun memicu jamur. Jaga penyiraman konsisten agar buah tidak pecah (cracking).',
+        image: 'https://images.unsplash.com/photo-1615811361523-6bd03d7748e7?q=80&w=800&auto=format&fit=crop'
+      },
+      { 
+        title: '6. Pewiwilan (Pruning)', 
+        content: 'Buang tunas air di ketiak daun. Sisakan hanya 1 batang utama (single stem) agar buah besar dan sirkulasi udara lancar.',
+        image: 'https://images.unsplash.com/photo-1615485925600-97237c4fc1ec?q=80&w=800&auto=format&fit=crop'
+      },
+      { 
+        title: '7. Masalah Blossom End Rot', 
+        content: 'Jika pantat buah hitam busuk, itu kurang Kalsium. Tambahkan cangkang telur tumbuk atau kapur dolomit ke tanah.',
+        image: 'https://images.unsplash.com/photo-1563820464645-f09b24479906?q=80&w=800&auto=format&fit=crop'
+      },
+      { 
+        title: '8. Polinasi (Penyerbukan)', 
+        content: 'Bantu penyerbukan dengan mengetuk-ngetuk batang bunga perlahan di pagi hari agar serbuk sari jatuh ke kepala putik.',
+        image: 'https://images.unsplash.com/photo-1463946377180-f518b38092d0?q=80&w=800&auto=format&fit=crop'
+      },
+      { 
+        title: '9. Topping', 
+        content: 'Potong pucuk utama jika tanaman sudah terlalu tinggi atau mencapai ujung ajir, agar nutrisi lari ke buah.',
+        image: 'https://images.unsplash.com/photo-1622325979326-7848c4883307?q=80&w=800&auto=format&fit=crop'
+      },
+      { 
+        title: '10. Panen', 
+        content: 'Panen saat buah berwarna merah/oranye. Biarkan matang di pohon (vine-ripened) untuk rasa termanis.',
+        image: 'https://images.unsplash.com/photo-1518977676601-b53f82aba655?q=80&w=800&auto=format&fit=crop'
+      },
     ],
     quiz: [
-      { question: 'Kenapa daun tomat sebaiknya tidak ikut disiram?', options: ['Takut kedinginan', 'Memicu tumbuhnya jamur', 'Membuat daun layu', 'Boros air'], correctAnswer: 1 },
-      { question: 'Apa fungsi Ajir pada tanaman tomat?', options: ['Hiasan', 'Menopang batang agar tegak', 'Mengusir hama', 'Menyerap air'], correctAnswer: 1 },
-      { question: 'Berapa kebutuhan sinar matahari untuk tomat?', options: ['1 jam', '2 jam', '6-8 jam', '24 jam'], correctAnswer: 2 },
-      { question: 'Penyakit "Pantat Buah Busuk" disebabkan kekurangan?', options: ['Air', 'Nitrogen', 'Kalsium', 'Matahari'], correctAnswer: 2 },
-      { question: 'Bagian mana yang harus dibuang saat pewiwilan?', options: ['Tunas air di ketiak daun', 'Akar utama', 'Bunga', 'Pucuk tanaman'], correctAnswer: 0 },
+      { question: 'Apa itu tanaman tipe "Indeterminate"?', options: ['Kerdil', 'Batang tumbuh terus memanjang', 'Tanpa akar', 'Mati setelah panen'], correctAnswer: 1 },
+      { question: 'Mengapa batang bawah tomat perlu ditimbun?', options: ['Agar hangat', 'Merangsang akar tambahan', 'Menghindari semut', 'Agar pendek'], correctAnswer: 1 },
+      { question: 'Penyakit busuk pantat buah disebabkan?', options: ['Kutu', 'Kekurangan Kalsium', 'Kelebihan Nitrogen', 'Jamur'], correctAnswer: 1 },
+      { question: 'Cara menyiram tomat yang benar?', options: ['Siram daun', 'Siram bunga', 'Siram tanah/akar', 'Siram buah'], correctAnswer: 2 },
+      { question: 'Tujuan pewiwilan?', options: ['Agar rimbun', 'Fokus nutrisi ke buah', 'Memperbanyak daun', 'Agar mati'], correctAnswer: 1 },
     ]
   },
 
-  // --- 3. SAWI HIDROPONIK ---
+  // =========================================
+  // 3. SAWI HIDROPONIK
+  // =========================================
   {
     id: 'sawi',
-    title: 'Sawi Hidroponik (Wick)',
-    description: 'Teknik menanam sawi tanpa tanah dengan sistem sumbu sederhana.',
+    title: 'Sawi Hidroponik Sistem Wick',
+    description: 'Menanam sayuran bersih tanpa tanah dengan sistem sumbu kapiler.',
     level: 'Pemula',
     duration: '30 Menit',
-    image: 'https://i.ibb.co.com/WWQYF9Mk/3-sawi-wick-system.jpg?q=80&w=600&auto=format&fit=crop',
+    image: 'https://i.ibb.co/WWQYF9Mk/3-sawi-wick-system.jpg?q=80&w=800&auto=format&fit=crop',
     materi: [
-      { title: '1. Apa itu Sistem Wick?', content: 'Sistem Wick (Sumbu) adalah sistem hidroponik paling sederhana. Memanfaatkan kain flanel sebagai sumbu untuk mengalirkan nutrisi dari bak ke akar tanaman.' },
-      { title: '2. Alat Bahan', content: 'Anda butuh: Bak air (bisa baskom bekas), Styrofoam (penutup), Netpot (wadah tanaman), Kain Flanel, Rockwool, dan Nutrisi AB Mix.' },
-      { title: '3. Memotong Rockwool', content: 'Potong rockwool (media tanam pengganti tanah) bentuk dadu ukuran 2x2x2 cm. Basahi dengan air biasa hingga lembap seperti spons.' },
-      { title: '4. Menyemai Benih', content: 'Lubangi sedikit rockwool dengan tusuk gigi, masukkan 1 biji sawi per kotak. Letakkan di nampan dan simpan di tempat gelap 1x24 jam hingga pecah benih.' },
-      { title: '5. Kenalkan Matahari', content: 'Begitu benih pecah dan muncul tunas putih/hijau, JEMUR di matahari pagi! Jika telat dijemur, tanaman akan kutilang (kurus tinggi langsing) dan gagal.' },
-      { title: '6. Pindah ke Netpot', content: 'Saat muncul 4 daun (usia 10-14 hari), pindahkan rockwool+tanaman ke dalam Netpot yang sudah dipasangi sumbu kain flanel.' },
-      { title: '7. Meracik Nutrisi', content: 'Siapkan air baku (air sumur/PAM endapan). Larutkan Nutrisi AB Mix Sayuran Daun. Patokannya biasanya 5ml A + 5ml B untuk 1 Liter air.' },
-      { title: '8. Penempatan', content: 'Letakkan netpot pada lubang styrofoam di atas bak nutrisi. Pastikan kain flanel menyentuh air nutrisi, tapi dasar netpot jangan terendam sepenuhnya (beri jarak untuk oksigen).' },
-      { title: '9. Perawatan', content: 'Cek air nutrisi setiap 3 hari. Jika surut, tambahkan larutan nutrisi baru. Pastikan tanaman kena matahari full.' },
-      { title: '10. Panen Cepat', content: 'Sawi hidroponik tumbuh sangat cepat. Usia 30-40 hari setelah semai (HSS) sudah bisa dipanen. Rasanya lebih renyah dan bersih dari tanah.' },
+      { 
+        title: '1. Konsep Hidroponik Wick', 
+        content: 'Sistem Wick memanfaatkan daya kapilaritas sumbu (kain flanel) untuk menyedot nutrisi dari bak ke akar. Tanpa listrik, hening, murah.',
+        image: 'https://images.unsplash.com/photo-1505471768190-275e2f970f2c?q=80&w=800&auto=format&fit=crop'
+      },
+      { 
+        title: '2. Media Tanam: Rockwool', 
+        content: 'Gunakan Rockwool (serat batuan). Potong dadu 2.5cm. Basahi dengan air, jangan diperas agar rongga udara tetap ada.',
+        image: 'https://images.unsplash.com/photo-1591857177580-dc82b9e4e11c?q=80&w=800&auto=format&fit=crop'
+      },
+      { 
+        title: '3. Fase Kritis: Sprout', 
+        content: 'Masukkan benih ke rockwool basah. Simpan gelap. Begitu pecah benih (putih), WAJIB JEMUR matahari agar tidak kutilang.',
+        image: 'https://images.unsplash.com/photo-1466692476868-aef1dfb1e735?q=80&w=800&auto=format&fit=crop'
+      },
+      { 
+        title: '4. Nutrisi AB Mix', 
+        content: 'Gunakan "AB Mix Sayuran Daun". Larutkan Stok A dan B terpisah. Jangan dicampur saat pekat agar tidak menggumpal.',
+        image: 'https://images.unsplash.com/photo-1585320806297-9794b3e4eeae?q=80&w=800&auto=format&fit=crop'
+      },
+      { 
+        title: '5. Rakit Bak & Netpot', 
+        content: 'Siapkan bak plastik dan styrofoam berlubang. Pasang kain flanel di netpot menjulur ke bawah sebagai sumbu.',
+        image: 'https://images.unsplash.com/photo-1556776587-c335e69e403d?q=80&w=800&auto=format&fit=crop'
+      },
+      { 
+        title: '6. Pindah Tanam', 
+        content: 'Pindahkan bibit (4 daun) ke netpot. Masukkan ke lubang styrofoam. Pastikan flanel menyentuh air nutrisi.',
+        image: 'https://images.unsplash.com/photo-1627914971260-5628b031b264?q=80&w=800&auto=format&fit=crop'
+      },
+      { 
+        title: '7. Jarak Air (Oksigen)', 
+        content: 'Beri jarak 1-2 cm antara dasar netpot dan permukaan air nutrisi. Akar butuh ruang udara untuk bernapas (oksigen).',
+        image: 'https://images.unsplash.com/photo-1581578013564-9aa6f81e3c4a?q=80&w=800&auto=format&fit=crop'
+      },
+      { 
+        title: '8. Perawatan Harian', 
+        content: 'Cek bak nutrisi. Jika surut, tambah larutan baru. Pastikan kena matahari min 5 jam agar daun lebar hijau.',
+        image: 'https://images.unsplash.com/photo-1627914971260-5628b031b264?q=80&w=800&auto=format&fit=crop'
+      },
+      { 
+        title: '9. Hama', 
+        content: 'Ambil ulat manual. Jika ada kutu, semprot air sabun tipis atau pestisida nabati.',
+        image: 'https://images.unsplash.com/photo-1596568359553-a56de6970068?q=80&w=800&auto=format&fit=crop'
+      },
+      { 
+        title: '10. Panen', 
+        content: 'Panen usia 30-40 hari. Cabut beserta akarnya atau potong pangkal. Cuci bersih netpot sebelum dipakai lagi.',
+        image: 'https://images.unsplash.com/photo-1524593166156-312f362cada0?q=80&w=800&auto=format&fit=crop'
+      },
     ],
     quiz: [
-      { question: 'Media tanam pengganti tanah pada hidroponik disebut?', options: ['Tanah Liat', 'Rockwool', 'Pasir', 'Batu Bata'], correctAnswer: 1 },
-      { question: 'Apa fungsi kain flanel pada sistem Wick?', options: ['Hiasan', 'Menyerap nutrisi ke akar', 'Menahan panas', 'Mengusir nyamuk'], correctAnswer: 1 },
-      { question: 'Apa yang terjadi jika telat menjemur kecambah?', options: ['Tanaman subur', 'Tanaman Kutilang (Kurus Tinggi)', 'Tanaman berbunga', 'Akar membesar'], correctAnswer: 1 },
-      { question: 'Nutrisi khusus hidroponik disebut?', options: ['NPK Mutiara', 'Urea', 'AB Mix', 'Kompos'], correctAnswer: 2 },
-      { question: 'Kapan sawi hidroponik bisa dipanen?', options: ['30-40 Hari', '3 Bulan', '6 Bulan', '1 Minggu'], correctAnswer: 0 },
+      { question: 'Prinsip kerja sistem Wick?', options: ['Pompa air', 'Kapilaritas sumbu', 'Percikan air', 'Kabut'], correctAnswer: 1 },
+      { question: 'Jika telat menjemur benih pecah?', options: ['Subur', 'Etiolasi (Kutilang)', 'Akar kuat', 'Daun ungu'], correctAnswer: 1 },
+      { question: 'Kenapa stok pekat A dan B tidak boleh dicampur?', options: ['Meledak', 'Menggumpal/endap', 'Bau', 'Hitam'], correctAnswer: 1 },
+      { question: 'Pupuk hidroponik adalah?', options: ['Kompos', 'Urea', 'NPK', 'AB Mix'], correctAnswer: 3 },
+      { question: 'Jarak ideal dasar netpot ke air?', options: ['Terendam', '1-2 cm (ruang oksigen)', '10 cm', 'Kering'], correctAnswer: 1 },
     ]
   },
 
-  // --- 4. ANGGREK BULAN ---
+  // =========================================
+  // 4. ANGGREK BULAN
+  // =========================================
   {
     id: 'anggrek',
     title: 'Merawat Anggrek Bulan',
-    description: 'Tips agar anggrek rajin berbunga, sehat, dan tidak busuk akar.',
+    description: 'Panduan ahli merawat anggrek agar rajin berbunga dan akar sehat.',
     level: 'Ahli',
     duration: '90 Menit',
-    image: 'https://i.ibb.co.com/1YdBQjKd/4-anggrek-bulan.jpg?q=80&w=600&auto=format&fit=crop',
+    image: 'https://i.ibb.co/1YdBQjKd/4-anggrek-bulan.jpg?q=80&w=800&auto=format&fit=crop',
     materi: [
-      { title: '1. Karakteristik Anggrek', content: 'Anggrek Bulan (Phalaenopsis) adalah tanaman epifit (menempel). Di alam liar, ia menempel di pohon. Jadi, akarnya butuh banyak sirkulasi udara.' },
-      { title: '2. Kesalahan Pemula', content: 'Kesalahan terbesar adalah menanam anggrek pakai TANAH. Jangan! Anggrek butuh media poros seperti arang, pakis, atau moss, bukan tanah padat.' },
-      { title: '3. Media Tanam', content: 'Gunakan Arang Kayu atau Pecahan Bata untuk daerah panas (karena tidak menyimpan air). Gunakan Moss Hitam/Putih untuk daerah dingin/kering.' },
-      { title: '4. Pot yang Tepat', content: 'Gunakan pot tanah liat yang banyak lubangnya (samping dan bawah). Akar anggrek butuh bernapas. Jika pakai pot plastik, lubangi dinding potnya.' },
-      { title: '5. Sinar Matahari', content: 'Anggrek bulan TIDAK SUKA matahari langsung (bisa gosong). Ia suka cahaya terang tapi teduh (di bawah naungan paranet atau teras). Intensitas sekitar 20-30%.' },
-      { title: '6. Cara Menyiram', content: 'Siram saat media benar-benar kering. Raba medianya dulu. Jika masih lembap, jangan disiram. Busuk akar adalah pembunuh nomor 1 anggrek.' },
-      { title: '7. Pemupukan', content: 'Gunakan pupuk daun (cair) dengan dosis sangat encer (1/4 dosis anjuran). Semprotkan ke balik daun dan akar pada pagi hari seminggu sekali.' },
-      { title: '8. Kelembapan', content: 'Anggrek suka lembap tapi tidak basah. Anda bisa menaruh nampan berisi air di bawah pot (tanpa menyentuh pot) untuk menjaga kelembapan udara sekitar (microclimate).' },
-      { title: '9. Pasca Bunga', content: 'Setelah bunga rontok, potong tangkai bunga di atas ruas kedua dari bawah. Ini merangsang tumbuhnya tangkai bunga baru atau anakan (keiki).' },
-      { title: '10. Hama & Penyakit', content: 'Waspada siput dan bekicot yang memakan akar muda. Waspada juga jamur jika sirkulasi udara buruk. Berikan fungisida jika ada bercak hitam pada daun.' },
+      { 
+        title: '1. Sifat Epifit', 
+        content: 'Anggrek menempel di pohon, bukan di tanah. Kuncinya adalah SIRKULASI UDARA di akar. Jangan pakai tanah padat.',
+        image: 'https://images.unsplash.com/photo-1545663737-1c699920b7bc?q=80&w=800&auto=format&fit=crop'
+      },
+      { 
+        title: '2. Media Tanam', 
+        content: 'Lingkungan kering: Pakai Moss/Sabut Kelapa (simpan air). Lingkungan lembap: Pakai Arang/Pakis (drainase cepat).',
+        image: 'https://images.unsplash.com/photo-1603206277266-93049534e3fb?q=80&w=800&auto=format&fit=crop'
+      },
+      { 
+        title: '3. Pot', 
+        content: 'Gunakan pot transparan atau pot tanah liat banyak lubang samping. Akar butuh napas dan fotosintesis.',
+        image: 'https://images.unsplash.com/photo-1602613977930-b302624a49c9?q=80&w=800&auto=format&fit=crop'
+      },
+      { 
+        title: '4. Pencahayaan', 
+        content: 'Tidak tahan matahari langsung (gosong). Suka cahaya teduh terang (teras/paranet). Ciri pas: Daun hijau cerah.',
+        image: 'https://images.unsplash.com/photo-1599598425947-32c744dc922d?q=80&w=800&auto=format&fit=crop'
+      },
+      { 
+        title: '5. Cara Menyiram', 
+        content: 'Siram HANYA saat media kering. Akar hijau=kenyang (jangan siram). Akar putih=haus (siram). Hindari air di ketiak daun.',
+        image: 'https://images.unsplash.com/photo-1563725676317-a0684f092e46?q=80&w=800&auto=format&fit=crop'
+      },
+      { 
+        title: '6. Sirkulasi Udara', 
+        content: 'Gunakan kipas angin kecil jika indoor. Angin mencegah jamur dan bakteri di media yang lembap.',
+        image: 'https://images.unsplash.com/photo-1550948537-130a1ce83314?q=80&w=800&auto=format&fit=crop'
+      },
+      { 
+        title: '7. Pemupukan', 
+        content: 'Pupuk NPK cair dosis sangat rendah (1/4 dosis), semprot seminggu sekali ke daun dan akar.',
+        image: 'https://images.unsplash.com/photo-1620126743958-8b9a9aa89267?q=80&w=800&auto=format&fit=crop'
+      },
+      { 
+        title: '8. Merangsang Bunga', 
+        content: 'Anggrek butuh stres suhu (perbedaan suhu siang-malam ekstrem) untuk berbunga. Taruh di tempat sejuk saat malam.',
+        image: 'https://images.unsplash.com/photo-1566915843477-8d54641977b1?q=80&w=800&auto=format&fit=crop'
+      },
+      { 
+        title: '9. Pasca Bunga', 
+        content: 'Potong tangkai bunga di atas ruas tidur (2 cm). Bisa tumbuh bunga baru atau anakan (keiki).',
+        image: 'https://images.unsplash.com/photo-1598528738936-c50861ccf95f?q=80&w=800&auto=format&fit=crop'
+      },
+      { 
+        title: '10. Penyakit', 
+        content: 'Daun lembek berair = busuk bakteri. Potong bagian busuk, beri fungisida/kayu manis, kurangi air.',
+        image: 'https://images.unsplash.com/photo-1586953229671-e97d19129df5?q=80&w=800&auto=format&fit=crop'
+      },
     ],
     quiz: [
-      { question: 'Anggrek bulan sebaiknya ditanam menggunakan media?', options: ['Tanah Liat Padat', 'Pasir Pantai', 'Arang atau Pakis', 'Lumpur'], correctAnswer: 2 },
-      { question: 'Apakah anggrek bulan suka matahari langsung terik?', options: ['Suka sekali', 'Tidak, bisa gosong', 'Butuh 24 jam', 'Tidak butuh cahaya'], correctAnswer: 1 },
-      { question: 'Penyebab utama kematian anggrek adalah?', options: ['Kurang air', 'Kebanyakan air (Busuk Akar)', 'Kebanyakan pupuk', 'Kurang sinar'], correctAnswer: 1 },
-      { question: 'Kapan waktu menyiram anggrek yang tepat?', options: ['Setiap jam', 'Saat media tanam sudah kering', 'Setiap malam', 'Saat hujan'], correctAnswer: 1 },
-      { question: 'Bagaimana pot yang ideal untuk anggrek?', options: ['Tertutup rapat', 'Banyak lubang sirkulasi', 'Terbuat dari besi', 'Berisi air penuh'], correctAnswer: 1 },
+      { question: 'Arti tanaman Epifit?', options: ['Hidup di air', 'Hidup di tanah', 'Menempel di pohon', 'Gurun'], correctAnswer: 2 },
+      { question: 'Media tanam lingkungan panas?', options: ['Arang/Pakis', 'Moss', 'Tanah', 'Pasir'], correctAnswer: 1 },
+      { question: 'Tanda anggrek butuh siram?', options: ['Jam 7 pagi', 'Akar hijau', 'Akar putih keperakan', 'Daun layu'], correctAnswer: 2 },
+      { question: 'Jika air menggenang di ketiak daun?', options: ['Bunga', 'Busuk lunak', 'Hijau', 'Kuat'], correctAnswer: 1 },
+      { question: 'Pemicu tangkai bunga?', options: ['Matahari terik', 'Urea', 'Perbedaan suhu ekstrem', 'Es'], correctAnswer: 2 },
     ]
   },
 
-  // --- 5. JAHE MERAH ---
+  // =========================================
+  // 5. JAHE MERAH
+  // =========================================
   {
     id: 'jahe',
-    title: 'Jahe Merah di Polybag',
-    description: 'Budidaya tanaman obat keluarga yang bernilai ekonomi tinggi.',
+    title: 'Budidaya Jahe Merah Organik',
+    description: 'Peluang bisnis tanaman obat di lahan sempit dengan polybag.',
     level: 'Pemula',
     duration: '50 Menit',
-    image: 'https://i.ibb.co.com/zVnnv45h/5-jahe-merah-organik.jpg?q=80&w=600&auto=format&fit=crop',
+    image: 'https://i.ibb.co/zVnnv45h/5-jahe-merah-organik.jpg?q=80&w=800&auto=format&fit=crop',
     materi: [
-      { title: '1. Potensi Jahe Merah', content: 'Jahe merah berbeda dengan jahe gajah/emprit. Rasanya lebih pedas dan khasiat obatnya lebih kuat. Harga jualnya pun cenderung lebih stabil dan tinggi.' },
-      { title: '2. Persiapan Rimpang', content: 'Pilih rimpang jahe yang tua (usia 10 bulan+). Potong rimpang yang memiliki 2-3 mata tunas. Jemur sebentar (jangan sampai kering) untuk menutup luka potong.' },
-      { title: '3. Pengecambahan', content: 'Letakkan rimpang di atas jerami atau sekam lembap di tempat teduh. Siram setiap hari. Tunggu 2-3 minggu hingga muncul tunas muda.' },
-      { title: '4. Media Tanam Polybag', content: 'Gunakan polybag besar / karung beras bekas. Campurkan Tanah : Pupuk Kandang : Sekam Bakar (1:1:1). Isi polybag 1/4 bagian saja dulu (jangan penuh).' },
-      { title: '5. Cara Menanam', content: 'Tanam rimpang bertunas sedalam 3-5 cm. Tunas menghadap ke atas. Jangan menanam terlalu dalam agar tunas tidak busuk.' },
-      { title: '6. Penempatan', content: 'Jahe merah butuh naungan saat muda (usia 0-3 bulan). Setelah 3 bulan, baru kenalkan dengan sinar matahari penuh agar rimpang maksimal.' },
-      { title: '7. Pembumbunan (PENTING)', content: 'Ini rahasianya! Setiap jahe tumbuh meninggi, tambahkan tanah+pupuk ke dalam polybag (timbun batangnya). Lakukan ini bertahap sampai polybag penuh. Ini membuat rimpang bertingkat.' },
-      { title: '8. Penyiraman', content: 'Jahe tidak suka becek. Siram secukupnya saja. Pastikan lubang polybag lancar agar air tidak menggenang.' },
-      { title: '9. Hama', content: 'Hama utama adalah bercak daun dan layu bakteri (daun menguning lalu mati). Gunakan bibit sehat dan sanitasi lingkungan yang bersih.' },
-      { title: '10. Panen', content: 'Jahe merah dipanen usia 9-10 bulan saat daun mulai menguning dan kering. Bongkar polybag, bersihkan rimpang dari tanah.' },
+      { 
+        title: '1. Mengapa Jahe Merah?', 
+        content: 'Lebih pedas dan mahal dibanding jahe biasa. Cocok ditanam di polybag vertikal untuk hasil maksimal.',
+        image: 'https://images.unsplash.com/photo-1615485290382-441e4d049cb5?q=80&w=800&auto=format&fit=crop'
+      },
+      { 
+        title: '2. Syarat Bibit', 
+        content: 'Pilih rimpang tua (10 bulan+), kulit cerah, punya 2-3 mata tunas. Jangan pakai jahe muda pasar.',
+        image: 'https://images.unsplash.com/photo-1615484477778-ca3b77940c25?q=80&w=800&auto=format&fit=crop'
+      },
+      { 
+        title: '3. Pengecambahan', 
+        content: 'Hamparkan rimpang di jerami lembap. Siram tiap hari. Tunas muncul dalam 2-3 minggu.',
+        image: 'https://images.unsplash.com/photo-1615485500704-8e99099928b3?q=80&w=800&auto=format&fit=crop'
+      },
+      { 
+        title: '4. Polybag & Media', 
+        content: 'Gunakan polybag besar/karung. Media: Tanah : Pupuk Kandang : Sekam (1:1:1). Isi 1/4 bagian saja dulu!',
+        image: 'https://images.unsplash.com/photo-1622383563227-0440114a8520?q=80&w=800&auto=format&fit=crop'
+      },
+      { 
+        title: '5. Cara Menanam', 
+        content: 'Tanam rimpang bertunas sedalam 3-5 cm, tunas menghadap ke ATAS. 2-3 rimpang per polybag.',
+        image: 'https://images.unsplash.com/photo-1592187270271-9a4b84faa228?q=80&w=800&auto=format&fit=crop'
+      },
+      { 
+        title: '6. Penempatan', 
+        content: 'Muda (0-3 bulan): butuh naungan. Dewasa (4+ bulan): butuh matahari penuh agar rimpang besar.',
+        image: 'https://images.unsplash.com/photo-1591857177580-dc82b9e4e11c?q=80&w=800&auto=format&fit=crop'
+      },
+      { 
+        title: '7. Pembumbunan (RAHASIA)', 
+        content: 'Setiap batang meninggi, tambah tanah+pupuk ke polybag (timbun). Lakukan bertahap sampai penuh. Ini melipatgandakan hasil.',
+        image: 'https://images.unsplash.com/photo-1622383563227-0440114a8520?q=80&w=800&auto=format&fit=crop'
+      },
+      { 
+        title: '8. Penyiraman', 
+        content: 'Jahe tidak suka becek (busuk). Siram secukupnya agar lembap. Pastikan drainase lancar.',
+        image: 'https://images.unsplash.com/photo-1615811361523-6bd03d7748e7?q=80&w=800&auto=format&fit=crop'
+      },
+      { 
+        title: '9. Hama', 
+        content: 'Bercak daun kuning (jamur). Semprot fungisida hayati atau pestisida nabati. Jaga kebersihan polybag.',
+        image: 'https://images.unsplash.com/photo-1599940824399-b87987ced72a?q=80&w=800&auto=format&fit=crop'
+      },
+      { 
+        title: '10. Panen', 
+        content: 'Panen usia 10-12 bulan saat daun menguning/kering. Bongkar polybag. 1 polybag bisa hasilkan 5-10kg.',
+        image: 'https://images.unsplash.com/photo-1635843104672-031d279d0121?q=80&w=800&auto=format&fit=crop'
+      },
     ],
     quiz: [
-      { question: 'Ciri khas Jahe Merah dibanding jahe lain adalah?', options: ['Ukurannya raksasa', 'Rasanya tawar', 'Rasanya lebih pedas & kulit merah', 'Warnanya biru'], correctAnswer: 2 },
-      { question: 'Kenapa saat menanam, polybag tidak diisi penuh tanah?', options: ['Agar hemat tanah', 'Untuk proses pembumbunan bertahap', 'Agar ringan', 'Agar jahe tidak tumbuh'], correctAnswer: 1 },
-      { question: 'Berapa usia panen jahe merah yang optimal?', options: ['3 Bulan', '5 Bulan', '9-10 Bulan', '2 Tahun'], correctAnswer: 2 },
-      { question: 'Apa tanda jahe siap panen?', options: ['Daun menghijau segar', 'Daun mulai menguning dan kering', 'Muncul buah', 'Batang membusuk'], correctAnswer: 1 },
-      { question: 'Apakah jahe suka tanah yang tergenang air?', options: ['Suka sekali', 'Tidak, rimpang bisa busuk', 'Biasa saja', 'Butuh kolam'], correctAnswer: 1 },
+      { question: 'Keunggulan jahe merah?', options: ['Besar', 'Manis', 'Pedas & Minyak Atsiri tinggi', 'Bisa dimakan'], correctAnswer: 2 },
+      { question: 'Kenapa polybag diisi tanah bertahap?', options: ['Hemat biaya', 'Pembumbunan rimpang bertingkat', 'Ringan', 'Air tumpah'], correctAnswer: 1 },
+      { question: 'Fungsi pembumbunan?', options: ['Cegah gulma', 'Cantik', 'Rimpang bertingkat', 'Dingin'], correctAnswer: 2 },
+      { question: 'Usia muda (0-3 bulan) jahe butuh?', options: ['Terik', 'AC', 'Naungan', 'Air'], correctAnswer: 2 },
+      { question: 'Tanda siap panen?', options: ['Hijau segar', 'Bunga', 'Daun menguning kering', 'Akar mencuat'], correctAnswer: 2 },
     ]
   },
 ];
