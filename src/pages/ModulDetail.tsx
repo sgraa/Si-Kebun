@@ -1,4 +1,3 @@
-// src/pages/ModulDetail.tsx
 import { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { modules } from '../data/modulData';
@@ -9,7 +8,7 @@ const ModulDetail = () => {
   const modul = modules.find((m) => m.id === id);
 
   // State Management
-  const [step, setStep] = useState(0); // 0-9 untuk materi, 10 untuk kuis intro, 11+ untuk soal
+  const [step, setStep] = useState(0); 
   const [quizScore, setQuizScore] = useState(0);
   const [showResult, setShowResult] = useState(false);
 
@@ -34,9 +33,8 @@ const ModulDetail = () => {
   };
 
   const handleQuizAnswer = (isCorrect: boolean) => {
-    if (isCorrect) setQuizScore(quizScore + 20); // 20 poin x 5 soal = 100
+    if (isCorrect) setQuizScore(quizScore + 20); 
     
-    // Cek apakah ini soal terakhir
     const currentQuizIndex = step - totalMateri;
     if (currentQuizIndex < modul.quiz.length - 1) {
       setStep(step + 1);
@@ -63,7 +61,8 @@ const ModulDetail = () => {
           </div>
 
           <div className="flex gap-4 justify-center">
-            <button onClick={() => navigate('/tutorial')} className="bg-gray-200 hover:bg-gray-300 text-gray-800 font-bold py-3 px-6 rounded-lg">
+            {/* PERBAIKAN 1: Link Tombol Selesai */}
+            <button onClick={() => navigate('/modul')} className="bg-gray-200 hover:bg-gray-300 text-gray-800 font-bold py-3 px-6 rounded-lg">
               Pilih Modul Lain
             </button>
             <button onClick={() => { setStep(0); setQuizScore(0); setShowResult(false); }} className="bg-emerald-600 hover:bg-emerald-700 text-white font-bold py-3 px-6 rounded-lg">
@@ -81,9 +80,12 @@ const ModulDetail = () => {
       {/* HEADER NAVIGASI */}
       <div className="bg-white shadow-sm sticky top-0 z-10">
         <div className="container mx-auto px-4 h-16 flex items-center justify-between">
-          <button onClick={() => navigate('/tutorial')} className="text-gray-500 hover:text-emerald-600 flex items-center gap-2">
+          
+          {/* PERBAIKAN 2: Link Tombol Kembali di Header */}
+          <button onClick={() => navigate('/modul')} className="text-gray-500 hover:text-emerald-600 flex items-center gap-2">
             ← <span className="hidden md:inline">Kembali ke Daftar</span>
           </button>
+
           <div className="text-sm font-semibold text-gray-700">
             {isMateriPhase ? `Materi ${step + 1} / ${totalMateri}` : `Kuis Akhir`}
           </div>
@@ -100,49 +102,44 @@ const ModulDetail = () => {
         <div className="bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden min-h-[400px] flex flex-col">
           
           {/* TAMPILAN MATERI */}
-                    {isMateriPhase && (
-                      <div className="p-8 md:p-12 flex flex-col h-full">
-                        {/* JUDUL LANGKAH */}
-                        <h1 className="text-2xl md:text-3xl font-bold text-gray-800 mb-4 border-l-4 border-emerald-500 pl-4">
-                          {modul.materi[step].title}
-                        </h1>
+          {isMateriPhase && (
+            <div className="p-8 md:p-12 flex flex-col h-full">
+              <h1 className="text-2xl md:text-3xl font-bold text-gray-800 mb-4 border-l-4 border-emerald-500 pl-4">
+                {modul.materi[step].title}
+              </h1>
 
-                        {/* --- TAMBAHAN: GAMBAR LANGKAH (STEP IMAGE) --- */}
-                        {/* Cek apakah ada gambar, jika ada tampilkan */}
-                        {modul.materi[step].image && (
-                          <div className="w-full h-64 md:h-80 mb-6 rounded-xl overflow-hidden shadow-md">
-                            <img 
-                              src={modul.materi[step].image} 
-                              alt={modul.materi[step].title} 
-                              className="w-full h-full object-cover transform hover:scale-105 transition-transform duration-500"
-                            />
-                          </div>
-                        )}
-                        {/* --------------------------------------------- */}
+              {/* GAMBAR LANGKAH */}
+              {modul.materi[step].image && (
+                <div className="w-full h-64 md:h-80 mb-6 rounded-xl overflow-hidden shadow-md">
+                  <img 
+                    src={modul.materi[step].image} 
+                    alt={modul.materi[step].title} 
+                    className="w-full h-full object-cover transform hover:scale-105 transition-transform duration-500"
+                  />
+                </div>
+              )}
 
-                        <div className="prose max-w-none text-gray-600 text-lg leading-relaxed flex-grow">
-                          {modul.materi[step].content}
-                        </div>
-                        
-                        {/* Navigasi Materi (Biarkan sama seperti sebelumnya) */}
-                        <div className="flex justify-between mt-10 pt-6 border-t border-gray-100">
-                          {/* ... tombol prev/next ... */}
-                          <button 
-                            onClick={handlePrev} 
-                            disabled={step === 0}
-                            className={`px-6 py-2 rounded-lg font-medium ${step === 0 ? 'text-gray-300 cursor-not-allowed' : 'text-gray-600 hover:bg-gray-100'}`}
-                          >
-                            Sebelumnya
-                          </button>
-                          <button 
-                            onClick={handleNext}
-                            className="bg-emerald-600 hover:bg-emerald-700 text-white px-8 py-2 rounded-lg font-bold shadow-md transition-all hover:scale-105"
-                          >
-                            {step === totalMateri - 1 ? 'Mulai Kuis 📝' : 'Lanjut →'}
-                          </button>
-                        </div>
-                      </div>
-                    )}
+              <div className="prose max-w-none text-gray-600 text-lg leading-relaxed flex-grow">
+                {modul.materi[step].content}
+              </div>
+              
+              <div className="flex justify-between mt-10 pt-6 border-t border-gray-100">
+                <button 
+                  onClick={handlePrev} 
+                  disabled={step === 0}
+                  className={`px-6 py-2 rounded-lg font-medium ${step === 0 ? 'text-gray-300 cursor-not-allowed' : 'text-gray-600 hover:bg-gray-100'}`}
+                >
+                  Sebelumnya
+                </button>
+                <button 
+                  onClick={handleNext}
+                  className="bg-emerald-600 hover:bg-emerald-700 text-white px-8 py-2 rounded-lg font-bold shadow-md transition-all hover:scale-105"
+                >
+                  {step === totalMateri - 1 ? 'Mulai Kuis 📝' : 'Lanjut →'}
+                </button>
+              </div>
+            </div>
+          )}
 
           {/* TAMPILAN KUIS */}
           {isQuizPhase && (

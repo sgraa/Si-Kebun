@@ -104,52 +104,52 @@ export const modules: ModulItem[] = [
       { 
         title: '1. Mengenal Tomat Ceri', 
         content: 'Tomat ceri berukuran kecil tapi manis. Tanaman ini "Indeterminate", batangnya terus tumbuh memanjang dan butuh penopang.',
-        image: 'https://images.unsplash.com/photo-1518977676601-b53f82aba655?q=80&w=800&auto=format&fit=crop'
+        image: 'https://i.ibb.co.com/bgPN9VMX/unnamed.jpg?q=80&w=800&auto=format&fit=crop'
       },
       { 
         title: '2. Syarat Mutlak: Matahari', 
         content: 'Tomat butuh 6-8 jam matahari. Jika teduh, tanaman kurus dan gagal buah. Pastikan lokasi pot sangat terang.',
-        image: 'https://images.unsplash.com/photo-1526346698789-22fd84314424?q=80&w=800&auto=format&fit=crop'
+        image: 'https://i.ibb.co.com/d0G9WLFH/unnamed.jpg?q=80&w=800&auto=format&fit=crop'
       },
       { 
         title: '3. Menanam Batang Dalam', 
         content: 'Saat pindah tanam, kubur sebagian batang bawah tomat. Batang yang tertimbun akan mengeluarkan akar, membuat tanaman lebih kuat.',
-        image: 'https://images.unsplash.com/photo-1592419044706-39796d40f98c?q=80&w=800&auto=format&fit=crop'
+        image: 'https://i.ibb.co.com/cK7D2tqC/unnamed.jpg?q=80&w=800&auto=format&fit=crop'
       },
       { 
         title: '4. Pemasangan Ajir (Staking)', 
         content: 'Pasang tongkat kayu/bambu setinggi 1.5m segera setelah tanam. Jangan tunda agar akar tidak rusak tertusuk nanti.',
-        image: 'https://images.unsplash.com/photo-1591857177580-dc82b9e4e11c?q=80&w=800&auto=format&fit=crop'
+        image: 'https://i.ibb.co.com/ymc7VtJ9/unnamed.jpg?q=80&w=800&auto=format&fit=crop'
       },
       { 
         title: '5. Teknik Penyiraman', 
         content: 'Siram TANAHNYA, BUKAN DAUNNYA. Air di daun memicu jamur. Jaga penyiraman konsisten agar buah tidak pecah (cracking).',
-        image: 'https://images.unsplash.com/photo-1615811361523-6bd03d7748e7?q=80&w=800&auto=format&fit=crop'
+        image: 'https://i.ibb.co.com/R4Sz4pmP/unnamed.jpg?q=80&w=800&auto=format&fit=crop'
       },
       { 
         title: '6. Pewiwilan (Pruning)', 
         content: 'Buang tunas air di ketiak daun. Sisakan hanya 1 batang utama (single stem) agar buah besar dan sirkulasi udara lancar.',
-        image: 'https://images.unsplash.com/photo-1615485925600-97237c4fc1ec?q=80&w=800&auto=format&fit=crop'
+        image: 'https://i.ibb.co.com/G4HhdRJF/unnamed.jpg?q=80&w=800&auto=format&fit=crop'
       },
       { 
         title: '7. Masalah Blossom End Rot', 
         content: 'Jika pantat buah hitam busuk, itu kurang Kalsium. Tambahkan cangkang telur tumbuk atau kapur dolomit ke tanah.',
-        image: 'https://images.unsplash.com/photo-1563820464645-f09b24479906?q=80&w=800&auto=format&fit=crop'
+        image: 'https://i.ibb.co.com/4nPyLLrV/unnamed.jpg?q=80&w=800&auto=format&fit=crop'
       },
       { 
         title: '8. Polinasi (Penyerbukan)', 
         content: 'Bantu penyerbukan dengan mengetuk-ngetuk batang bunga perlahan di pagi hari agar serbuk sari jatuh ke kepala putik.',
-        image: 'https://images.unsplash.com/photo-1463946377180-f518b38092d0?q=80&w=800&auto=format&fit=crop'
+        image: 'https://i.ibb.co.com/kgSB67QQ/unnamed.jpg?q=80&w=800&auto=format&fit=crop'
       },
       { 
         title: '9. Topping', 
         content: 'Potong pucuk utama jika tanaman sudah terlalu tinggi atau mencapai ujung ajir, agar nutrisi lari ke buah.',
-        image: 'https://images.unsplash.com/photo-1622325979326-7848c4883307?q=80&w=800&auto=format&fit=crop'
+        image: 'https://i.ibb.co.com/WvDzZsWq/unnamed.jpg?q=80&w=800&auto=format&fit=crop'
       },
       { 
         title: '10. Panen', 
         content: 'Panen saat buah berwarna merah/oranye. Biarkan matang di pohon (vine-ripened) untuk rasa termanis.',
-        image: 'https://images.unsplash.com/photo-1518977676601-b53f82aba655?q=80&w=800&auto=format&fit=crop'
+        image: 'https://i.ibb.co.com/rRmkTZpf/unnamed.jpg?q=80&w=800&auto=format&fit=crop'
       },
     ],
     quiz: [
