@@ -3,6 +3,8 @@ import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
 import Home from './pages/Home';
 import TanamanList from './pages/TanamanList';
 import TanamanDetail from './pages/TanamanDetail';
+import ModulList from './pages/ModulList';
+import ModulDetail from './pages/ModulDetail';
 
 const App: React.FC = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = React.useState(false);
@@ -47,6 +49,17 @@ const App: React.FC = () => {
                   <span className="relative z-10 flex items-center">
                     <span className="mr-1">🌿</span>
                     Profil Tanaman
+                  </span>
+                  <div className="absolute inset-0 bg-emerald-50 rounded-lg scale-x-0 group-hover:scale-x-100 transition-transform duration-200"></div>
+                </Link>
+                {/* --- TAMBAHAN MENU MODUL (DESKTOP) --- */}
+                <Link
+                  to="/modul"
+                  className="relative text-gray-700 hover:text-emerald-600 px-4 py-2 rounded-lg font-medium transition-all duration-200 group"
+                >
+                  <span className="relative z-10 flex items-center">
+                    <span className="mr-1">🎓</span>
+                    Modul Praktik
                   </span>
                   <div className="absolute inset-0 bg-emerald-50 rounded-lg scale-x-0 group-hover:scale-x-100 transition-transform duration-200"></div>
                 </Link>
@@ -119,6 +132,17 @@ const App: React.FC = () => {
                       Profil Tanaman
                     </span>
                   </Link>
+                  {/* --- TAMBAHAN MENU MODUL (MOBILE) --- */}
+                  <Link
+                    to="/modul"
+                    onClick={() => setIsMobileMenuOpen(false)}
+                    className="block text-gray-700 hover:text-emerald-600 px-4 py-2 rounded-lg font-medium transition-colors duration-200"
+                  >
+                    <span className="flex items-center">
+                      <span className="mr-2">🎓</span>
+                      Modul Praktik
+                    </span>
+                  </Link>
                 </div>
 
                 {/* Mobile Search */}
@@ -146,7 +170,9 @@ const App: React.FC = () => {
             <Route path="/profil-tanaman" element={<TanamanList />} />
             <Route path="/profil-tanaman/:category" element={<TanamanList />} />
             <Route path="/profil-tanaman/:category/:plantId" element={<TanamanDetail />} />
-
+            {/* --- RUTE UNTUK MODUL HARYO --- */}
+            <Route path="/modul" element={<ModulList />} />
+            <Route path="/modul/:id" element={<ModulDetail />} />
             {/* 404 Route */}
             <Route
               path="*"

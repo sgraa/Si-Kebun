@@ -26,6 +26,12 @@ const Home: React.FC = () => {
       description: 'Temukan perlengkapan berkualitas dan supplier terpercaya',
       icon: '🛒',
       link: '/toko'
+    },
+    {
+      title: 'Modul Praktik',  // INI PUNYA ANDA
+      description: 'Simulasi belajar menanam interaktif dengan kuis',
+      icon: '🎓',
+      link: '/modul'
     }
   ];
 
