@@ -5,7 +5,14 @@ import TanamanList from './pages/TanamanList';
 import TanamanDetail from './pages/TanamanDetail';
 import ModulList from './pages/ModulList';
 import ModulDetail from './pages/ModulDetail';
+<<<<<<< Updated upstream
 import TutorialBerkebun from './pages/TutorialBerkebun';
+=======
+import RekomendasiTanaman from './pages/RekomendasiTanaman';
+import "leaflet/dist/leaflet.css";
+import LokasiSupplier from "./pages/lokasiSupplier";
+
+>>>>>>> Stashed changes
 
 const App: React.FC = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = React.useState(false);
@@ -24,7 +31,7 @@ const App: React.FC = () => {
                     <span className="text-white text-xl font-bold">🌿</span>
                   </div>
                   <div className="hidden sm:block">
-                    <h1 className="text-2xl font-bold bg-gradient-to-r from-emerald-600 to-teal-600 bg-clip-text text-transparent">
+                    <h1 className="text-2xl font-bold bg-gradient-to-r from-emerald-600 to-teal-600 bg-clip-text text-transparent whitespace-nowrap">
                       Si-Kebun
                     </h1>
                   </div>
@@ -35,7 +42,7 @@ const App: React.FC = () => {
               </div>
 
               {/* Desktop Navigation */}
-              <nav className="hidden md:flex space-x-8">
+              <nav className="hidden md:flex w-full justify-between">
                 <Link
                   to="/"
                   className="relative text-gray-700 hover:text-emerald-600 px-4 py-2 rounded-lg font-medium transition-all duration-200 group"
@@ -64,6 +71,7 @@ const App: React.FC = () => {
                   </span>
                   <div className="absolute inset-0 bg-emerald-50 rounded-lg scale-x-0 group-hover:scale-x-100 transition-transform duration-200"></div>
                 </Link>
+<<<<<<< Updated upstream
                 {/* TUTORIAL BERKEBUN (DESKTOP) */}
                 <Link
                   to="/tutorial"
@@ -75,7 +83,31 @@ const App: React.FC = () => {
                   </span>
                   <div className="absolute inset-0 bg-emerald-50 rounded-lg scale-x-0 group-hover:scale-x-100 transition-transform duration-200"></div>
                 </Link>
+=======
+                <Link
+                  to="/rekomendasi-tanaman"
+                  className="relative text-gray-700 hover:text-emerald-600 px-4 py-2 rounded-lg font-medium transition-all duration-200 group"
+                >
+                  <span className="relative z-10 flex items-center">
+                    <span className="mr-1">💡</span>
+                    Rekomendasi
+                  </span>
+                  <div className="absolute inset-0 bg-emerald-50 rounded-lg scale-x-0 group-hover:scale-x-100 transition-transform duration-200"></div>
+                </Link>
+                <Link
+                  to="/lokasi-supplier"
+                  className="relative text-gray-700 hover:text-emerald-600 px-4 py-2 rounded-lg font-medium transition-all duration-200 group"
+                >
+                  <span className="relative z-10 flex items-center">
+                    <span className="mr-1">📍</span>
+                    Toko Terdekat
+                  </span>
+                  <div className="absolute inset-0 bg-emerald-50 rounded-lg scale-x-0 group-hover:scale-x-100 transition-transform duration-200"></div>
+                </Link>
+              
+>>>>>>> Stashed changes
               </nav>
+              
 
               {/* Right Section */}
               <div className="flex items-center space-x-4">
@@ -196,8 +228,15 @@ const App: React.FC = () => {
             {/* --- RUTE UNTUK MODUL HARYO --- */}
             <Route path="/modul" element={<ModulList />} />
             <Route path="/modul/:id" element={<ModulDetail />} />
+<<<<<<< Updated upstream
              {/* TUTORIAL BERKEBUN */}
             <Route path="/tutorial" element={<TutorialBerkebun />} />
+=======
+            <Route path="/rekomendasi-tanaman" element={<RekomendasiTanaman />} />
+            <Route path="/lokasi-supplier" element={<LokasiSupplier />} />
+            
+
+>>>>>>> Stashed changes
             {/* 404 Route */}
             <Route
               path="*"

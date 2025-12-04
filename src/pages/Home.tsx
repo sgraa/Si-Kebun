@@ -32,7 +32,14 @@ const Home: React.FC = () => {
       description: 'Simulasi belajar menanam interaktif dengan kuis',
       icon: '🎓',
       link: '/modul'
+    },
+    {
+      title: 'Rekomendasi Tanaman',  // Punya Qolbi
+      description: 'Rekomendasi tanaman sesuai kondisi lingkungan Anda',
+      icon: '💡',
+      link: '/rekomendasi-tanaman'
     }
+
   ];
 
   const stats = [
