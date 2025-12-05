@@ -108,16 +108,19 @@ const ModulDetail = () => {
                 {modul.materi[step].title}
               </h1>
 
-              {/* GAMBAR LANGKAH */}
+              {/* GAMBAR LANGKAH (DIPERBAIKI) */}
               {modul.materi[step].image && (
-                <div className="w-full h-64 md:h-80 mb-6 rounded-xl overflow-hidden shadow-md">
-                  <img 
-                    src={modul.materi[step].image} 
-                    alt={modul.materi[step].title} 
-                    className="w-full h-full object-cover transform hover:scale-105 transition-transform duration-500"
-                  />
-                </div>
-              )}
+              // Hapus 'h-64' dan 'md:h-80' agar tinggi wadah tidak dibatasi
+              <div className="w-full mb-6 rounded-xl overflow-hidden shadow-md">
+                <img 
+                  src={modul.materi[step].image} 
+                  alt={modul.materi[step].title} 
+                  // Ganti 'h-full' menjadi 'h-auto'
+                  // Hapus 'object-cover'
+                  className="w-full h-auto transform hover:scale-105 transition-transform duration-500"
+                />
+              </div>
+)}
 
               <div className="prose max-w-none text-gray-600 text-lg leading-relaxed flex-grow">
                 {modul.materi[step].content}
