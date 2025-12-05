@@ -5,14 +5,11 @@ import TanamanList from './pages/TanamanList';
 import TanamanDetail from './pages/TanamanDetail';
 import ModulList from './pages/ModulList';
 import ModulDetail from './pages/ModulDetail';
-<<<<<<< Updated upstream
 import TutorialBerkebun from './pages/TutorialBerkebun';
-=======
 import RekomendasiTanaman from './pages/RekomendasiTanaman';
 import "leaflet/dist/leaflet.css";
-import LokasiSupplier from "./pages/lokasiSupplier";
+import LokasiSupplier from "./pages/LokasiSupplier";
 
->>>>>>> Stashed changes
 
 const App: React.FC = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = React.useState(false);
@@ -41,71 +38,78 @@ const App: React.FC = () => {
                 </Link>
               </div>
 
-              {/* Desktop Navigation */}
-              <nav className="hidden md:flex w-full justify-between">
+{/* Desktop Navigation */}
+              <nav className="hidden md:flex items-center gap-1 lg:gap-2">
+                
+                {/* 1. Home */}
                 <Link
                   to="/"
-                  className="relative text-gray-700 hover:text-emerald-600 px-4 py-2 rounded-lg font-medium transition-all duration-200 group"
+                  className="relative text-gray-700 hover:text-emerald-600 px-2 lg:px-3 py-2 rounded-lg font-medium transition-all duration-200 text-sm group"
                 >
                   <span className="relative z-10">Home</span>
                   <div className="absolute inset-0 bg-emerald-50 rounded-lg scale-x-0 group-hover:scale-x-100 transition-transform duration-200"></div>
                 </Link>
+
+                {/* 2. Profil Tanaman (SUDAH DIPERBAIKI SPASINYA) */}
                 <Link
                   to="/profil-tanaman"
-                  className="relative text-gray-700 hover:text-emerald-600 px-4 py-2 rounded-lg font-medium transition-all duration-200 group"
+                  className="relative text-gray-700 hover:text-emerald-600 px-2 lg:px-3 py-2 rounded-lg font-medium transition-all duration-200 text-sm group whitespace-nowrap"
                 >
                   <span className="relative z-10 flex items-center">
-                    <span className="mr-1">🌿</span>
-                    Profil Tanaman
+                    <span className="mr-1 text-lg">🌿</span>
+                    <span className="hidden lg:inline">Profil&nbsp;</span>Tanaman
                   </span>
                   <div className="absolute inset-0 bg-emerald-50 rounded-lg scale-x-0 group-hover:scale-x-100 transition-transform duration-200"></div>
                 </Link>
-                {/* --- TAMBAHAN MENU MODUL (DESKTOP) --- */}
-                <Link
-                  to="/modul"
-                  className="relative text-gray-700 hover:text-emerald-600 px-4 py-2 rounded-lg font-medium transition-all duration-200 group"
-                >
-                  <span className="relative z-10 flex items-center">
-                    <span className="mr-1">🎓</span>
-                    Modul Praktik
-                  </span>
-                  <div className="absolute inset-0 bg-emerald-50 rounded-lg scale-x-0 group-hover:scale-x-100 transition-transform duration-200"></div>
-                </Link>
-<<<<<<< Updated upstream
-                {/* TUTORIAL BERKEBUN (DESKTOP) */}
+
+                {/* 3. Tutorial (TUKAR POSISI KE SINI) */}
                 <Link
                   to="/tutorial"
-                  className="relative text-gray-700 hover:text-emerald-600 px-4 py-2 rounded-lg font-medium transition-all duration-200 group"
+                  className="relative text-gray-700 hover:text-emerald-600 px-2 lg:px-3 py-2 rounded-lg font-medium transition-all duration-200 text-sm group"
                 >
                   <span className="relative z-10 flex items-center">
-                    <span className="mr-1">📚</span>
+                    <span className="mr-1 text-lg">📚</span>
                     Tutorial
                   </span>
                   <div className="absolute inset-0 bg-emerald-50 rounded-lg scale-x-0 group-hover:scale-x-100 transition-transform duration-200"></div>
                 </Link>
-=======
+
+                {/* 4. Modul Praktik (PINDAH KE SINI) */}
                 <Link
-                  to="/rekomendasi-tanaman"
-                  className="relative text-gray-700 hover:text-emerald-600 px-4 py-2 rounded-lg font-medium transition-all duration-200 group"
+                  to="/modul"
+                  className="relative text-gray-700 hover:text-emerald-600 px-2 lg:px-3 py-2 rounded-lg font-medium transition-all duration-200 text-sm group whitespace-nowrap"
                 >
                   <span className="relative z-10 flex items-center">
-                    <span className="mr-1">💡</span>
+                    <span className="mr-1 text-lg">🎓</span>
+                    Modul
+                  </span>
+                  <div className="absolute inset-0 bg-emerald-50 rounded-lg scale-x-0 group-hover:scale-x-100 transition-transform duration-200"></div>
+                </Link>
+
+                {/* 5. Rekomendasi */}
+                <Link
+                  to="/rekomendasi-tanaman"
+                  className="relative text-gray-700 hover:text-emerald-600 px-2 lg:px-3 py-2 rounded-lg font-medium transition-all duration-200 text-sm group"
+                >
+                  <span className="relative z-10 flex items-center">
+                    <span className="mr-1 text-lg">💡</span>
                     Rekomendasi
                   </span>
                   <div className="absolute inset-0 bg-emerald-50 rounded-lg scale-x-0 group-hover:scale-x-100 transition-transform duration-200"></div>
                 </Link>
+
+                {/* 6. Toko Terdekat */}
                 <Link
                   to="/lokasi-supplier"
-                  className="relative text-gray-700 hover:text-emerald-600 px-4 py-2 rounded-lg font-medium transition-all duration-200 group"
+                  className="relative text-gray-700 hover:text-emerald-600 px-2 lg:px-3 py-2 rounded-lg font-medium transition-all duration-200 text-sm group whitespace-nowrap"
                 >
                   <span className="relative z-10 flex items-center">
-                    <span className="mr-1">📍</span>
-                    Toko Terdekat
+                    <span className="mr-1 text-lg">📍</span>
+                    Toko
                   </span>
                   <div className="absolute inset-0 bg-emerald-50 rounded-lg scale-x-0 group-hover:scale-x-100 transition-transform duration-200"></div>
                 </Link>
-              
->>>>>>> Stashed changes
+
               </nav>
               
 
@@ -225,18 +229,14 @@ const App: React.FC = () => {
             <Route path="/profil-tanaman" element={<TanamanList />} />
             <Route path="/profil-tanaman/:category" element={<TanamanList />} />
             <Route path="/profil-tanaman/:category/:plantId" element={<TanamanDetail />} />
-            {/* --- RUTE UNTUK MODUL HARYO --- */}
             <Route path="/modul" element={<ModulList />} />
             <Route path="/modul/:id" element={<ModulDetail />} />
-<<<<<<< Updated upstream
              {/* TUTORIAL BERKEBUN */}
             <Route path="/tutorial" element={<TutorialBerkebun />} />
-=======
             <Route path="/rekomendasi-tanaman" element={<RekomendasiTanaman />} />
             <Route path="/lokasi-supplier" element={<LokasiSupplier />} />
             
 
->>>>>>> Stashed changes
             {/* 404 Route */}
             <Route
               path="*"
@@ -283,21 +283,28 @@ const App: React.FC = () => {
         <footer className="bg-gradient-to-br from-gray-900 via-emerald-900 to-gray-900 text-white">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
             {/* Newsletter Section */}
-            <div className="bg-white bg-opacity-10 backdrop-blur-sm rounded-2xl p-8 mb-12">
-              <div className="max-w-2xl mx-auto text-center">
-                <h3 className="text-2xl font-bold mb-4 text-white">
+            {/* Newsletter Section - Diperbaiki: Card Putih di atas Gradasi */}
+            <div className="bg-white rounded-2xl p-8 mb-12 shadow-2xl">
+              <div className="max-w-3xl mx-auto text-center">
+                
+                {/* Judul jadi Hijau Gelap agar kontras */}
+                <h3 className="text-2xl font-bold mb-4 text-emerald-800">
                   🌱 Dapatkan Tips Berkebun Gratis
                 </h3>
-                <p className="text-emerald-200 mb-6">
+                
+                {/* Deskripsi jadi Abu-abu agar enak dibaca */}
+                <p className="text-gray-600 mb-6">
                   Bergabung dengan komunitas 1000+ pecinta tanaman dan dapatkan panduan eksklusif setiap minggu
                 </p>
+                
                 <div className="flex flex-col sm:flex-row gap-4 justify-center">
                   <input
                     type="email"
                     placeholder="Email Anda"
-                    className="px-6 py-3 bg-white bg-opacity-20 border border-emerald-400 rounded-full text-white placeholder-emerald-300 focus:outline-none focus:bg-opacity-30 transition-all duration-200"
+                    // Input field disesuaikan untuk background putih
+                    className="px-6 py-3 bg-gray-50 border border-gray-300 rounded-full text-gray-800 placeholder-gray-400 focus:outline-none focus:border-emerald-500 focus:ring-2 focus:ring-emerald-200 transition-all duration-200 w-full sm:w-auto"
                   />
-                  <button className="px-8 py-3 bg-gradient-to-r from-emerald-400 to-teal-500 text-white font-bold rounded-full shadow-lg hover:shadow-xl transform hover:-translate-y-1 transition-all duration-300">
+                  <button className="px-8 py-3 bg-emerald-600 hover:bg-emerald-700 text-white font-bold rounded-full shadow-lg transform hover:-translate-y-1 transition-all duration-300">
                     Berlangganan
                   </button>
                 </div>

@@ -10,10 +10,22 @@ const Home: React.FC = () => {
       link: '/profil-tanaman'
     },
     {
+      title: 'Modul Praktik',
+      description: 'Simulasi belajar menanam interaktif dengan kuis',
+      icon: '🎓',
+      link: '/modul'
+    },
+    {
       title: 'Tutorial Berkebun',
       description: 'Panduan langkah demi langkah dari pemula hingga ahli',
       icon: '📚',
       link: '/tutorial'
+    },
+    {
+      title: 'Rekomendasi Tanaman',
+      description: 'Rekomendasi tanaman sesuai kondisi lingkungan Anda',
+      icon: '💡',
+      link: '/rekomendasi-tanaman'
     },
     {
       title: 'Forum Komunitas',
@@ -25,21 +37,8 @@ const Home: React.FC = () => {
       title: 'Toko & Supplier',
       description: 'Temukan perlengkapan berkualitas dan supplier terpercaya',
       icon: '🛒',
-      link: '/toko'
-    },
-    {
-      title: 'Modul Praktik',  // INI PUNYA ANDA
-      description: 'Simulasi belajar menanam interaktif dengan kuis',
-      icon: '🎓',
-      link: '/modul'
-    },
-    {
-      title: 'Rekomendasi Tanaman',  // Punya Qolbi
-      description: 'Rekomendasi tanaman sesuai kondisi lingkungan Anda',
-      icon: '💡',
-      link: '/rekomendasi-tanaman'
+      link: '/lokasi-supplier'
     }
-
   ];
 
   const stats = [
@@ -51,18 +50,19 @@ const Home: React.FC = () => {
 
   return (
     <div className="min-h-screen">
-      {/* Hero Section - NodeBB Clean Design */}
+      {/* Hero Section */}
       <section className="bg-white border-b border-gray-200">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 md:py-24">
           <div className="text-center">
-            {/* Simple Logo */}
-            <div className="flex justify-center mb-8">
-              <div className="w-16 h-16 bg-primary text-white rounded-xl flex items-center justify-center">
-                <span className="text-2xl">🌿</span>
-              </div>
+            
+            {/* --- LOGO UTAMA (SUDAH DIPERBESAR & TRANSPARAN) --- */}
+            <div className="flex justify-center mb-6">
+              <span className="text-7xl filter drop-shadow-sm transition-transform hover:scale-110 duration-300">
+                🌿
+              </span>
             </div>
+            {/* -------------------------------------------------- */}
 
-            {/* Clean Heading */}
             <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
               Si-Kebun
             </h1>
@@ -70,49 +70,38 @@ const Home: React.FC = () => {
               Platform edukasi berkebun untuk pemula dan profesional
             </p>
 
-            {/* Clean CTA */}
             <div className="flex flex-col sm:flex-row gap-4 justify-center mb-12">
               <Link
                 to="/profil-tanaman"
-                className="btn btn-primary px-8 py-3 text-base"
+                className="inline-block bg-emerald-600 text-white px-8 py-3 rounded-lg font-bold hover:bg-emerald-700 transition-colors"
               >
                 Jelajahi Tanaman
               </Link>
 
               <Link
-                to="/tutorial"
-                className="btn btn-secondary px-8 py-3 text-base"
+                to="/modul"
+                className="inline-block bg-white text-emerald-600 border-2 border-emerald-600 px-8 py-3 rounded-lg font-bold hover:bg-emerald-50 transition-colors"
               >
                 Mulai Belajar
               </Link>
             </div>
 
-            {/* Simple Trust Indicators */}
             <div className="flex flex-wrap justify-center gap-6 text-sm text-gray-500">
               <span className="flex items-center">
-                <svg className="w-4 h-4 mr-2 text-green-500" fill="currentColor" viewBox="0 0 20 20">
-                  <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
-                </svg>
-                100% Gratis
+                <span className="w-2 h-2 bg-green-500 rounded-full mr-2"></span> 100% Gratis
               </span>
               <span className="flex items-center">
-                <svg className="w-4 h-4 mr-2 text-blue-500" fill="currentColor" viewBox="0 0 20 20">
-                  <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539 1.118l1.07 3.292a1 1 0 00.364 1.118L2.98 8.72c-.783.57-.38 1.81.588 1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
-                </svg>
-                Expert Verified
+                <span className="w-2 h-2 bg-blue-500 rounded-full mr-2"></span> Expert Verified
               </span>
               <span className="flex items-center">
-                <svg className="w-4 h-4 mr-2 text-purple-500" fill="currentColor" viewBox="0 0 20 20">
-                  <path d="M13 6a3 3 0 11-6 0 3 3 0 016 0zM18 8a2 2 0 11-4 0 2 2 0 014 0zM14 15a4 4 0 00-8 0v3h8v-3zM6 8a2 2 0 11-4 0 2 2 0 014 0zM16 18v-3a5.972 5.972 0 00-.75-2.906A3.005 3.005 0 0119 15v3h-3zM4.75 12.094A5.973 5.973 0 004 15v3H1v-3a3 3 0 013.75-2.906z" />
-                </svg>
-                Community Driven
+                <span className="w-2 h-2 bg-purple-500 rounded-full mr-2"></span> Community Driven
               </span>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Stats Section - Clean */}
+      {/* Stats Section */}
       <section className="bg-gray-50 border-b border-gray-200">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
@@ -130,9 +119,14 @@ const Home: React.FC = () => {
         </div>
       </section>
 
-      {/* Features Section - NodeBB Style */}
-      <section className="bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+{/* Features Section - Background Gradasi Elegan */}
+      <section className="bg-gradient-to-br from-gray-50 via-emerald-50/40 to-white relative overflow-hidden border-y border-emerald-100/50">
+        
+        {/* Hiasan Background Pudar (Agar tidak polos) */}
+        <div className="absolute top-0 right-0 -mt-20 -mr-20 w-96 h-96 bg-emerald-100 rounded-full blur-3xl opacity-30 pointer-events-none"></div>
+        <div className="absolute bottom-0 left-0 -mb-20 -ml-20 w-96 h-96 bg-teal-100 rounded-full blur-3xl opacity-30 pointer-events-none"></div>
+
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 relative z-10">
           <div className="text-center mb-12">
             <h2 className="text-2xl font-bold text-gray-900 mb-4">
               Fitur Si-Kebun
@@ -142,15 +136,17 @@ const Home: React.FC = () => {
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {features.map((feature, index) => (
               <div
                 key={index}
-                className="card card-interactive p-6 text-center"
+                className="p-6 text-center border border-gray-100/50 rounded-xl shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300 bg-white/80 backdrop-blur-sm group"
               >
-                <div className="w-12 h-12 bg-primary text-white rounded-lg flex items-center justify-center mx-auto mb-4">
-                  <span className="text-xl">{feature.icon}</span>
+                {/* Icon Tanpa Kotak (Sesuai Request Sebelumnya) */}
+                <div className="flex items-center justify-center mx-auto mb-4 transition-transform group-hover:scale-110 duration-300">
+                  <span className="text-5xl filter drop-shadow-sm">{feature.icon}</span>
                 </div>
+                
                 <h3 className="font-semibold text-gray-900 mb-2">
                   {feature.title}
                 </h3>
@@ -159,7 +155,7 @@ const Home: React.FC = () => {
                 </p>
                 <Link
                   to={feature.link}
-                  className="text-primary text-sm font-medium hover:text-primary-hover transition-colors"
+                  className="text-emerald-600 text-sm font-bold hover:text-emerald-700 transition-colors inline-flex items-center"
                 >
                   Pelajari lebih lanjut →
                 </Link>
@@ -169,29 +165,37 @@ const Home: React.FC = () => {
         </div>
       </section>
 
-      {/* CTA Section - Clean */}
-      <section className="bg-primary">
-        <div className="max-w-4xl mx-auto text-center px-4 sm:px-6 lg:px-8 py-16">
+      {/* CTA Section (Hijau Solid) */}
+      {/* CTA Section (Gradasi Hijau Elegan) */}
+      <section className="bg-gradient-to-r from-emerald-700 via-emerald-600 to-teal-600 relative overflow-hidden">
+  
+        {/* Aksen Latar Belakang (Opsional: Agar tidak terlalu polos) */}
+        <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')] opacity-10"></div>
+        <div className="absolute top-0 right-0 w-64 h-64 bg-white opacity-5 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2"></div>
+        <div className="absolute bottom-0 left-0 w-64 h-64 bg-emerald-900 opacity-20 rounded-full blur-3xl translate-y-1/2 -translate-x-1/2"></div>
+
+        {/* Konten Utama */}
+        <div className="max-w-4xl mx-auto text-center px-4 sm:px-6 lg:px-8 py-20 relative z-10">
           <h2 className="text-3xl font-bold text-white mb-4">
             Siap Memulai Perjalanan Berkebun?
           </h2>
-          <p className="text-primary-light mb-8 text-lg">
+          <p className="text-emerald-50 mb-8 text-lg">
             Bergabung dengan ribuan pecinta tanaman dan mulai budidaya impian Anda.
           </p>
 
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link
-              to="/profil-tanaman"
-              className="btn bg-white text-primary hover:bg-gray-50 px-8 py-3 text-base"
+              to="/modul"
+              className="inline-block px-8 py-3 bg-white text-emerald-600 font-bold rounded-lg hover:bg-gray-100 transition-colors"
             >
-              Mulai Sekarang
+              Mulai Belajar Sekarang
             </Link>
 
             <Link
               to="/forum"
-              className="btn bg-transparent text-white border border-white hover:bg-white hover:bg-opacity-10 px-8 py-3 text-base"
+              className="inline-block px-8 py-3 text-white font-bold border-2 border-white rounded-lg hover:bg-white hover:text-emerald-600 transition-colors"
             >
-              Join Community
+              Gabung Komunitas
             </Link>
           </div>
         </div>
