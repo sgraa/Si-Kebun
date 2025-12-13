@@ -1,79 +1,123 @@
-import React, { useState, useEffect } from 'react';
-import { useParams, Link } from 'react-router-dom';
-import { categories, getPlantById, getRelatedPlants } from '../data/plantsData';
-import PlantCard from '../components/PlantCard';
-import type { Plant } from '../types/plant';
+import React, { useState, useEffect, useMemo } from "react";
+import { useParams, Link } from "react-router-dom";
+import PlantCard from "../components/PlantCard";
+import { fetchCategories, fetchPlantByUID, fetchPlants, type PlantCategory } from "../lib/strapi";
+import type { Plant } from "../types/plant";
 
 const TanamanDetail: React.FC = () => {
   const { category, plantId } = useParams<{ category: string; plantId: string }>();
   const [plant, setPlant] = useState<Plant | null>(null);
+  const [categories, setCategories] = useState<PlantCategory[]>([]);
+  const [relatedPlants, setRelatedPlants] = useState<Plant[]>([]);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
-    const timer = setTimeout(() => {
-      if (plantId) {
-        const foundPlant = getPlantById(plantId);
-        if (foundPlant) {
-          setPlant(foundPlant);
-          setError(null);
-        } else {
-          setError('Tanaman tidak ditemukan');
-        }
-      } else {
-        setError('ID tanaman tidak valid');
-      }
-      setIsLoading(false);
-    }, 300);
+    let mounted = true;
 
-    return () => clearTimeout(timer);
+    async function load() {
+      try {
+        if (!plantId) {
+          setError("ID tanaman tidak valid");
+          setIsLoading(false);
+          return;
+        }
+
+        setIsLoading(true);
+        setError(null);
+
+        const [cats, foundPlant] = await Promise.all([fetchCategories(), fetchPlantByUID(plantId)]);
+        if (!mounted) return;
+
+        setCategories(cats);
+
+        if (!foundPlant) {
+          setError("Tanaman tidak ditemukan");
+          setPlant(null);
+          setRelatedPlants([]);
+          return;
+        }
+
+        setPlant(foundPlant);
+
+        // Fetch related plants from the same category (excluding the current one)
+        const relatedList = await fetchPlants({
+          categoryId: foundPlant.category,
+          pageSize: 4,
+        });
+        if (!mounted) return;
+        setRelatedPlants(relatedList.filter((p) => p.id !== foundPlant.id).slice(0, 3));
+      } catch (e: any) {
+        if (!mounted) return;
+        setError(e?.message || "Gagal memuat data tanaman.");
+        setPlant(null);
+        setRelatedPlants([]);
+      } finally {
+        if (!mounted) return;
+        setIsLoading(false);
+      }
+    }
+
+    load();
+    return () => {
+      mounted = false;
+    };
   }, [plantId]);
 
-  const currentCategory = category ? categories.find(cat => cat.id === category) : null;
-  const relatedPlants = plant ? getRelatedPlants(plant, 3) : [];
+  const categoryMap = useMemo(() => {
+    const m = new Map<string, PlantCategory>();
+    categories.forEach((c) => m.set(c.id, c));
+    return m;
+  }, [categories]);
+
+  const currentCategory =
+    categoryMap.get(category || (plant ? plant.category : "")) ?? null;
+  const categoryIdForBreadcrumb = category || plant?.category || "";
 
   const handleImageError = (e: React.SyntheticEvent<HTMLImageElement>) => {
-    e.currentTarget.src = `https://ui-avatars.com/api/?name=${encodeURIComponent(plant?.name || '')}&background=e5e7eb&color=374151&size=800&bold=true`;
+    e.currentTarget.src = `https://ui-avatars.com/api/?name=${encodeURIComponent(
+      plant?.name || ""
+    )}&background=e5e7eb&color=374151&size=800&bold=true`;
   };
 
   const getDifficultyColor = (difficulty: string) => {
     switch (difficulty) {
-      case 'easy':
-        return 'bg-green-50 text-green-700 border-green-200';
-      case 'medium':
-        return 'bg-yellow-50 text-yellow-700 border-yellow-200';
-      case 'hard':
-        return 'bg-red-50 text-red-700 border-red-200';
+      case "easy":
+        return "bg-green-50 text-green-700 border-green-200";
+      case "medium":
+        return "bg-yellow-50 text-yellow-700 border-yellow-200";
+      case "hard":
+        return "bg-red-50 text-red-700 border-red-200";
       default:
-        return 'bg-gray-50 text-gray-700 border-gray-200';
+        return "bg-gray-50 text-gray-700 border-gray-200";
     }
   };
 
   const getDifficultyLabel = (difficulty: string) => {
     switch (difficulty) {
-      case 'easy':
-        return 'Mudah';
-      case 'medium':
-        return 'Sedang';
-      case 'hard':
-        return 'Sulit';
+      case "easy":
+        return "Mudah";
+      case "medium":
+        return "Sedang";
+      case "hard":
+        return "Sulit";
       default:
-        return 'Unknown';
+        return "Unknown";
     }
   };
 
   const getCategoryColor = (categoryId: string) => {
     switch (categoryId) {
-      case 'hias':
-        return 'bg-emerald-50 text-emerald-700 border-emerald-200';
-      case 'hortikultura':
-        return 'bg-orange-50 text-orange-700 border-orange-200';
-      case 'obat':
-        return 'bg-purple-50 text-purple-700 border-purple-200';
-      case 'perkebunan':
-        return 'bg-blue-50 text-blue-700 border-blue-200';
+      case "hias":
+        return "bg-emerald-50 text-emerald-700 border-emerald-200";
+      case "hortikultura":
+        return "bg-orange-50 text-orange-700 border-orange-200";
+      case "obat":
+        return "bg-purple-50 text-purple-700 border-purple-200";
+      case "perkebunan":
+        return "bg-blue-50 text-blue-700 border-blue-200";
       default:
-        return 'bg-gray-50 text-gray-700 border-gray-200';
+        return "bg-gray-50 text-gray-700 border-gray-200";
     }
   };
 
@@ -139,7 +183,7 @@ const TanamanDetail: React.FC = () => {
             <>
               <span className="mx-2 text-gray-400">/</span>
               <Link
-                to={`/profil-tanaman/${category}`}
+                to={`/profil-tanaman/${categoryIdForBreadcrumb}`}
                 className="text-gray-500 hover:text-gray-700"
               >
                 {currentCategory.name}
@@ -154,7 +198,7 @@ const TanamanDetail: React.FC = () => {
         <div className="card mb-8">
           <div className="grid grid-cols-1 lg:grid-cols-2">
             {/* Plant Image */}
-            <div className="aspect-video lg:aspect-auto bg-gray-100">
+            <div className="aspect-video lg:aspect-auto bg-gray-100 max-w-[800px] w-full mx-auto">
               <img
                 src={plant.image}
                 alt={plant.name}
@@ -380,7 +424,7 @@ const TanamanDetail: React.FC = () => {
         {/* Back Button */}
         <div className="text-center">
           <Link
-            to={`/profil-tanaman${category ? `/${category}` : ''}`}
+            to={`/profil-tanaman${categoryIdForBreadcrumb ? `/${categoryIdForBreadcrumb}` : ""}`}
             className="btn btn-secondary"
           >
             ← Kembali ke Daftar

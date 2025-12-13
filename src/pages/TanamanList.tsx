@@ -1,51 +1,81 @@
-import React, { useState, useEffect, useMemo } from 'react';
-import { useParams, useSearchParams, Link } from 'react-router-dom';
-import PlantCard from '../components/PlantCard';
-import { categories, getPlantsByCategory, searchPlants } from '../data/plantsData';
-import type { Plant, PlantCategory } from '../types/plant';
+// src/pages/TanamanList.tsx
+import React, { useEffect, useMemo, useState } from "react";
+import { Link, useParams, useSearchParams } from "react-router-dom";
+import PlantCard from "../components/PlantCard";
+import { fetchCategories, fetchPlants, type PlantCategory } from "../lib/strapi";
+import type { Plant } from "../types/plant";
 
 const TanamanList: React.FC = () => {
   const { category } = useParams<{ category?: string }>();
   const [searchParams] = useSearchParams();
-  const [searchQuery, setSearchQuery] = useState(searchParams.get('search') || '');
+
+  const [searchQuery, setSearchQuery] = useState(searchParams.get("search") || "");
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
 
+  const [categories, setCategories] = useState<PlantCategory[]>([]);
+  const [plants, setPlants] = useState<Plant[]>([]);
+
+  const categoryMap = useMemo(() => {
+    const m = new Map<string, PlantCategory>();
+    categories.forEach((c) => m.set(c.id, c));
+    return m;
+  }, [categories]);
+
   useEffect(() => {
-    const timer = setTimeout(() => {
-      setIsLoading(false);
-      setError(Math.random() > 0.9 ? 'Koneksi Anda terputus. Silakan coba lagi.' : null);
-    }, 300);
+    let mounted = true;
 
-    return () => clearTimeout(timer);
-  }, [category]);
+    async function load() {
+      try {
+        setIsLoading(true);
+        setError(null);
 
-  const filteredPlants = useMemo(() => {
-    let result: Plant[] = [];
+        const [cats, list] = await Promise.all([
+          fetchCategories(),
+          fetchPlants({
+            categoryId: category || undefined,
+            search: searchQuery || undefined,
+            pageSize: 500,
+          }),
+        ]);
 
-    // Filter by category if specified
-    if (category && categories.some(cat => cat.id === category)) {
-      result = getPlantsByCategory(category as PlantCategory);
-    } else {
-      // Get all plants if no specific category
-      result = Object.values(categories).flatMap(cat =>
-        getPlantsByCategory(cat.id)
-      );
+        if (!mounted) return;
+
+        // plantCount dihitung dari list yang tampil saat ini (cukup untuk UI kamu).
+        const counts: Record<string, number> = {};
+        list.forEach((p) => {
+          if (!p.category) return;
+          counts[p.category] = (counts[p.category] || 0) + 1;
+        });
+
+        setCategories(
+          cats.map((c) => ({
+            ...c,
+            plantCount: counts[c.id] ?? c.plantCount,
+          }))
+        );
+
+        setPlants(list);
+      } catch (e: any) {
+        if (!mounted) return;
+        setError(e?.message || "Gagal memuat data dari server.");
+      } finally {
+        if (!mounted) return;
+        setIsLoading(false);
+      }
     }
 
-    // Apply search filter
-    if (searchQuery.trim()) {
-      result = searchPlants(searchQuery);
-    }
-
-    return result;
+    load();
+    return () => {
+      mounted = false;
+    };
   }, [category, searchQuery]);
 
   const handleSearchChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setSearchQuery(e.target.value);
   };
 
-  const currentCategory = category ? categories.find(cat => cat.id === category) : null;
+  const currentCategory = category ? categoryMap.get(category) ?? null : null;
 
   if (isLoading) {
     return (
@@ -72,19 +102,17 @@ const TanamanList: React.FC = () => {
             <div className="card max-w-md mx-auto p-8">
               <div className="w-12 h-12 bg-red-50 rounded-full flex items-center justify-center mx-auto mb-4">
                 <svg className="w-6 h-6 text-red-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"
+                  />
                 </svg>
               </div>
-              <h2 className="text-lg font-semibold text-gray-900 mb-2">
-                {error}
-              </h2>
-              <p className="text-gray-600 mb-4">
-                Silakan periksa koneksi Anda dan coba lagi.
-              </p>
-              <button
-                onClick={() => window.location.reload()}
-                className="btn btn-primary"
-              >
+              <h2 className="text-lg font-semibold text-gray-900 mb-2">{error}</h2>
+              <p className="text-gray-600 mb-4">Silakan periksa koneksi Anda dan coba lagi.</p>
+              <button onClick={() => window.location.reload()} className="btn btn-primary">
                 Muat Ulang
               </button>
             </div>
@@ -97,7 +125,6 @@ const TanamanList: React.FC = () => {
   return (
     <div className="min-h-screen bg-gray-50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-        {/* Header */}
         {category && currentCategory && (
           <div className="mb-8">
             <div className="flex items-center mb-4 text-sm">
@@ -124,7 +151,9 @@ const TanamanList: React.FC = () => {
                   </div>
                 </div>
                 <div className="text-right">
-                  <div className="text-2xl font-bold text-emerald-600">{currentCategory.plantCount}</div>
+                  <div className="text-2xl font-bold text-emerald-600">
+                    {currentCategory.plantCount ?? plants.length}
+                  </div>
                   <div className="text-sm text-gray-500">Jenis Tanaman</div>
                 </div>
               </div>
@@ -132,7 +161,6 @@ const TanamanList: React.FC = () => {
           </div>
         )}
 
-        {/* Breadcrumb for main page */}
         {!category && (
           <div className="mb-8">
             <div className="flex items-center text-sm text-gray-500">
@@ -145,24 +173,19 @@ const TanamanList: React.FC = () => {
           </div>
         )}
 
-        {/* Categories Grid (only show on main page) */}
         {!category && (
           <div className="mb-8">
             <h2 className="text-xl font-semibold text-gray-900 mb-6">Kategori Tanaman</h2>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
               {categories.map((cat) => (
-                <Link
-                  key={cat.id}
-                  to={`/profil-tanaman/${cat.id}`}
-                  className="card card-interactive p-6 text-center"
-                >
+                <Link key={cat.id} to={`/profil-tanaman/${cat.id}`} className="card card-interactive p-6 text-center">
                   <div className="w-12 h-12 bg-emerald-50 text-emerald-700 rounded-lg flex items-center justify-center mx-auto mb-4">
                     <span className="text-xl">{cat.icon}</span>
                   </div>
                   <h3 className="font-semibold text-gray-900 mb-2">{cat.name}</h3>
                   <p className="text-sm text-gray-600 mb-4">{cat.description}</p>
                   <div className="text-emerald-600 font-medium text-sm">
-                    {cat.plantCount} jenis tanaman
+                    {(cat.plantCount ?? 0) > 0 ? `${cat.plantCount} jenis tanaman` : "Lihat tanaman"}
                   </div>
                 </Link>
               ))}
@@ -170,7 +193,6 @@ const TanamanList: React.FC = () => {
           </div>
         )}
 
-        {/* Search Bar */}
         <div className="mb-6">
           <div className="max-w-2xl mx-auto">
             <div className="relative">
@@ -187,10 +209,7 @@ const TanamanList: React.FC = () => {
                 className="input pl-10 pr-10"
               />
               {searchQuery && (
-                <button
-                  onClick={() => setSearchQuery('')}
-                  className="absolute inset-y-0 right-0 pr-3 flex items-center"
-                >
+                <button onClick={() => setSearchQuery("")} className="absolute inset-y-0 right-0 pr-3 flex items-center">
                   <svg className="h-5 w-5 text-gray-400 hover:text-gray-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
                   </svg>
@@ -200,59 +219,13 @@ const TanamanList: React.FC = () => {
           </div>
         </div>
 
-        {/* Results Header */}
-        <div className="flex items-center justify-between mb-6">
-          <div>
-            <h2 className="text-xl font-semibold text-gray-900">
-              {searchQuery ? 'Hasil Pencarian' : 'Daftar Tanaman'}
-            </h2>
-            <p className="text-gray-600">
-              {filteredPlants.length} tanaman{searchQuery && ` untuk "${searchQuery}"`}
-              {category && ` di kategori ${currentCategory?.name}`}
-            </p>
-          </div>
-
-          {category && (
-            <Link
-              to="/profil-tanaman"
-              className="btn btn-secondary"
-            >
-              ← Kembali ke Kategori
-            </Link>
-          )}
-        </div>
-
-        {/* Plants Grid */}
-        {filteredPlants.length > 0 ? (
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {filteredPlants.map((plant) => (
-              <PlantCard key={plant.id} plant={plant} />
-            ))}
-          </div>
+        {plants.length === 0 ? (
+          <div className="card p-10 text-center text-gray-600">Tidak ada tanaman yang ditemukan.</div>
         ) : (
-          <div className="text-center py-12">
-            <div className="w-16 h-16 bg-gray-100 rounded-full flex items-center justify-center mx-auto mb-4">
-              <svg className="w-8 h-8 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
-              </svg>
-            </div>
-            <h3 className="text-lg font-semibold text-gray-900 mb-2">
-              {searchQuery ? 'Tidak ada hasil pencarian' : 'Tidak ada data'}
-            </h3>
-            <p className="text-gray-600 mb-4">
-              {searchQuery
-                ? `Tidak ditemukan tanaman untuk "${searchQuery}"`
-                : 'Belum ada tanaman'
-              }
-            </p>
-            {searchQuery && (
-              <button
-                onClick={() => setSearchQuery('')}
-                className="btn btn-secondary"
-              >
-                Hapus Pencarian
-              </button>
-            )}
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {plants.map((p) => (
+              <PlantCard key={p.id} plant={p} category={categoryMap.get(p.category) ?? null} />
+            ))}
           </div>
         )}
       </div>

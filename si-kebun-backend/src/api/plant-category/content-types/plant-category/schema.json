@@ -1,0 +1,38 @@
+{
+  "kind": "collectionType",
+  "collectionName": "plant_categories",
+  "info": {
+    "singularName": "plant-category",
+    "pluralName": "plant-categories",
+    "displayName": "plant-category"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "plantCategoryID": {
+      "type": "uid",
+      "targetField": "name"
+    },
+    "name": {
+      "type": "string",
+      "required": true
+    },
+    "description": {
+      "type": "text"
+    },
+    "icon": {
+      "type": "string"
+    },
+    "color": {
+      "type": "string"
+    },
+    "plants": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::plant.plant",
+      "mappedBy": "plant_category"
+    }
+  }
+}
